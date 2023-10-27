@@ -2,3 +2,66 @@ baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
 theme = 'hugo-blog-awesome'
+
+enableEmoji = true
+ignoreErrors = ["additional-script-loading-error"] # ignore error of loading additional scripts.
+
+
+# set markup.highlight.noClasses=false to enable code highlight
+[markup]
+  [markup.highlight]
+    noClasses = false
+  [markup.goldmark.renderer]
+    unsafe = true
+	[markup.tableOfContents]
+		startLevel = 2 # ToC starts from H2
+		endLevel = 4 # ToC ends at H4
+		ordered = false # generates <ul> instead of <ol>
+
+
+
+[menu]
+[[menu.main]]
+    pageRef="/"
+    name = 'Home'
+    url = '/'
+    weight = 10
+  [[menu.main]]
+    pageRef="posts"
+    name = 'Posts'
+    url = '/posts/'
+    weight = 20
+  [[menu.main]]
+    pageRef="about"
+    name = 'About'
+    url = '/about/'
+    weight = 30
+
+
+
+
+
+
+sitename = "James Lingford"
+defaultColor = "dark"
+description = "A blog discussing proteins, evoltuion, and various other topics"
+mainSections = ['posts']
+
+
+
+
+# Allow to override `browserconfig.xml` params (configuration for windows embeded browsers)
+[params.browserconfig]
+  TileColor = "#2d89ef" # default windows 10 blue tile color
+
+[[params.socialIcons]]
+name = "github"
+url = "https://github.com/jlingford"
+
+[[params.socialIcons]]
+name = "twitter"
+url = "https://twitter.com"
+
+[[params.socialIcons]]
+name = "Rss"
+url = "index.xml"
