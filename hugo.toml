@@ -43,7 +43,7 @@ ignoreErrors = ["additional-script-loading-error"] # ignore error of loading add
     url = '/cv/'
     weight = 40
   [[menu.main]]
-    pageRef="contact"
+    pageRef = "contact"
     name = 'Contact'
     url = '/contact/'
     weight = 50
