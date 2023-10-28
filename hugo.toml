@@ -1,12 +1,13 @@
-baseURL = 'https://example.org/'
+########################### Global info ############################
+baseURL = 'https://jameslingford.com'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'James Lingford'
 theme = 'hugo-blog-awesome'
-
 enableEmoji = true
 ignoreErrors = ["additional-script-loading-error"] # ignore error of loading additional scripts.
 
 
+########################### Markup settings ############################
 # set markup.highlight.noClasses=false to enable code highlight
 [markup]
   [markup.highlight]
@@ -19,7 +20,7 @@ ignoreErrors = ["additional-script-loading-error"] # ignore error of loading add
 		ordered = false # generates <ul> instead of <ol>
 
 
-
+########################### Banner menu ############################
 [menu]
 [[menu.main]]
     pageRef="/"
@@ -28,28 +29,52 @@ ignoreErrors = ["additional-script-loading-error"] # ignore error of loading add
     weight = 10
   [[menu.main]]
     pageRef="posts"
-    name = 'Posts'
-    url = '/posts/'
-    weight = 20
+    name = 'Blog'
+    url = '/blog/'
+    weight = 30
   [[menu.main]]
     pageRef="about"
     name = 'About'
     url = '/about/'
-    weight = 30
+    weight = 20
+  [[menu.main]]
+    pageRef="cv"
+    name = 'CV'
+    url = '/cv/'
+    weight = 40
+  [[menu.main]]
+    pageRef="contact"
+    name = 'Contact'
+    url = '/contact/'
+    weight = 50
 
 
+########################### Home page body ############################
+[params]
+    sitename = "James Lingford"
+    defaultColor = "dark"
+    description = "A blog discussing proteins, evoltuion, and various other topics"
+    mainSections = ['posts']
+    toc = true
+    goToTop = true
+    dateFormat = "" # if nothing is specified then day-month-year format is used.
+
+[params.author]
+    avatar = "avatar.jpg" # put the file in assets folder; also ensure that image has same height and width
+    intro = "James Lingford"
+    name = "James Lingford"
+    description = "A blog about proteins, evolution, and other topics"
+
+[params.webmanifest]
+    name = "jameslingford"
+    short_name = "jameslingford"
+    start_url = "/"
+    theme_color = "#434648"
+    background_color = "#131418"
+    display = "standalone"
 
 
-
-
-sitename = "James Lingford"
-defaultColor = "dark"
-description = "A blog discussing proteins, evoltuion, and various other topics"
-mainSections = ['posts']
-
-
-
-
+########################### Tiles at footer ############################
 # Allow to override `browserconfig.xml` params (configuration for windows embeded browsers)
 [params.browserconfig]
   TileColor = "#2d89ef" # default windows 10 blue tile color
