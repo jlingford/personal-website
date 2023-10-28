@@ -60,7 +60,7 @@ ignoreErrors = ["additional-script-loading-error"] # ignore error of loading add
     dateFormat = "" # if nothing is specified then day-month-year format is used.
 
 [params.author]
-    avatar = "avatar.jpg" # put the file in assets folder; also ensure that image has same height and width
+    avatar = "james-avi3.jpg" # put the file in assets folder; also ensure that image has same height and width
     intro = "James Lingford"
     name = "James Lingford"
     description = "A blog about proteins, evolution, and other topics"
