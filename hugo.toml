@@ -1,6 +1,7 @@
 ########################### Global info ############################
 baseURL = 'https://jameslingford.com'
-languageCode = 'en-us'
+languageCode = 'en-gb'
+defaultContentLanguage = "en-gb"
 title = 'James Lingford'
 theme = 'hugo-blog-awesome'
 enableEmoji = true
@@ -10,14 +11,14 @@ ignoreErrors = ["additional-script-loading-error"] # ignore error of loading add
 ########################### Markup settings ############################
 # set markup.highlight.noClasses=false to enable code highlight
 [markup]
-  [markup.highlight]
-    noClasses = false
-  [markup.goldmark.renderer]
-    unsafe = true
-	[markup.tableOfContents]
-		startLevel = 2 # ToC starts from H2
-		endLevel = 4 # ToC ends at H4
-		ordered = false # generates <ul> instead of <ol>
+    [markup.highlight]
+        noClasses = false
+    [markup.goldmark.renderer]
+        unsafe = true
+        [markup.tableOfContents]
+            startLevel = 2 # ToC starts from H2
+            endLevel = 5 # ToC ends at H4
+            ordered = false # generates <ul> instead of <ol>
 
 
 ########################### Banner menu ############################
@@ -27,22 +28,22 @@ ignoreErrors = ["additional-script-loading-error"] # ignore error of loading add
     name = 'Home'
     url = '/'
     weight = 10
-  [[menu.main]]
+[[menu.main]]
     pageRef="posts"
     name = 'Blog'
     url = '/blog/'
     weight = 30
-  [[menu.main]]
+[[menu.main]]
     pageRef="about"
     name = 'About'
     url = '/about/'
     weight = 20
-  [[menu.main]]
+[[menu.main]]
     pageRef="cv"
     name = 'CV'
     url = '/cv/'
     weight = 40
-  [[menu.main]]
+[[menu.main]]
     pageRef = "contact"
     name = 'Contact'
     url = '/contact/'
@@ -52,41 +53,43 @@ ignoreErrors = ["additional-script-loading-error"] # ignore error of loading add
 ########################### Home page body ############################
 [params]
     sitename = "James Lingford"
-    defaultColor = "dark"
-    description = "A blog discussing proteins, evoltuion, and various other topics"
+    defaultColor = "auto"
     mainSections = ['posts']
     toc = true
     goToTop = true
     dateFormat = "" # if nothing is specified then day-month-year format is used.
+    description = "Minimal blog written by James Lingford"
+    additionalScripts = ['js/custom.js', 'js/constom-2.js']
+    rssFeedDescription = "summary"
 
 [params.author]
     avatar = "james-avi3.jpg" # put the file in assets folder; also ensure that image has same height and width
     intro = "James Lingford"
     name = "James Lingford"
-    description = "A blog about proteins, evolution, and other topics"
+    description = "A blog about proteins and evolution."
 
 [params.webmanifest]
     name = "jameslingford"
     short_name = "jameslingford"
     start_url = "/"
     theme_color = "#434648"
-    background_color = "#131418"
+    background_color = "#fff"
     display = "standalone"
 
 
 ########################### Tiles at footer ############################
 # Allow to override `browserconfig.xml` params (configuration for windows embeded browsers)
 [params.browserconfig]
-  TileColor = "#2d89ef" # default windows 10 blue tile color
+    TileColor = "#2d89ef" # default windows 10 blue tile color
 
 [[params.socialIcons]]
-name = "github"
-url = "https://github.com/jlingford"
+    name = "github"
+    url = "https://github.com/jlingford"
 
 [[params.socialIcons]]
-name = "twitter"
-url = "https://twitter.com"
+    name = "twitter"
+    url = "https://twitter.com"
 
 [[params.socialIcons]]
-name = "Rss"
-url = "index.xml"
+    name = "Rss"
+    url = "index.xml"
