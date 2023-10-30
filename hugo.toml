@@ -3,7 +3,7 @@ baseURL = 'https://jameslingford.com'
 languageCode = 'en-gb'
 defaultContentLanguage = "en-gb"
 title = 'James Lingford'
-theme = 'hugo-blog-awesome'
+theme = 'modified-hugo-blog'
 enableEmoji = true
 ignoreErrors = ["additional-script-loading-error"] # ignore error of loading additional scripts.
 
@@ -23,11 +23,11 @@ ignoreErrors = ["additional-script-loading-error"] # ignore error of loading add
 
 ########################### Banner menu ############################
 [menu]
-[[menu.main]]
-    pageRef="/"
-    name = 'Home'
-    url = '/'
-    weight = 10
+# [[menu.main]]
+#     pageRef="/"
+#     name = 'Home'
+#     url = '/'
+#     weight = 10
 [[menu.main]]
     pageRef="posts"
     name = 'Blog'
@@ -66,7 +66,7 @@ ignoreErrors = ["additional-script-loading-error"] # ignore error of loading add
     avatar = "james-avi3.jpg" # put the file in assets folder; also ensure that image has same height and width
     intro = "James Lingford"
     name = "James Lingford"
-    description = "A blog about proteins and evolution."
+    description = "A blog about proteins and evolution. Mostly trying to learn protein design, but also computational biology skills in general. Hopefully some opinionated posts about science and literature too."
 
 [params.webmanifest]
     name = "jameslingford"
@@ -83,13 +83,26 @@ ignoreErrors = ["additional-script-loading-error"] # ignore error of loading add
     TileColor = "#2d89ef" # default windows 10 blue tile color
 
 [[params.socialIcons]]
+    name = "kofi"
+    url = "https://ko-fi.com/jameslingford"
+
+[[params.socialIcons]]
     name = "github"
     url = "https://github.com/jlingford"
 
 [[params.socialIcons]]
     name = "twitter"
-    url = "https://twitter.com"
+    url = "https://bsky.app/profile/dialecticbio.bsky.social"
 
 [[params.socialIcons]]
-    name = "Rss"
-    url = "index.xml"
+    name = "rss"
+
+[[params.socialIcons]]
+    name = "googlescholar"
+    url = "https://scholar.google.com/citations?user=4KSRHTUAAAAJ&hl=en"
+
+[[params.socialIcons]]
+    name = "linkedin"
+    url = "https://www.linkedin.com/in/jameslingford/"
+
+
