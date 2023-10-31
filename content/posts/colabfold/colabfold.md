@@ -8,6 +8,7 @@ categories = ['computational biology', 'how to']
 +++
 
 ![image](/images/a.png)
+*The ColabFold notebook*
 
 ## Introduction
 
@@ -21,7 +22,7 @@ The ColabFold authors (namely Sergey Ovchinnikov) have also made [other Colab no
 allow users to accomplish tasks such as running RoseTTAFold2, OmegaFold, and AlphaFold2 in
 batch.
 
-### The problem of relying of Google for GPUs 
+### The problem of relying on Google for GPUs 
 
 The issue, however, is that GPUs are expensive, and you can quickly chew through the free GPU quota Google sets for
 users after a few ColabFold jobs. One way around this is to keep registering free Google
@@ -138,12 +139,109 @@ just make sure every key appears on its own separate line by checking `authorize
 your favourite terminal editor like `vim` or `nano`
 
 
-## 1. `conda install` ColabFold dependencies
+## 1. Install ColabFold dependencies
 
+### Option 1: install with `poetry`
 
+The ColabFold repository on GitHub uses [python-poetry](https://python-poetry.org/) to manage its python dependencies,
+so we'll need to install these dependencies into a virtual environment on our remote HPC server.
+If the sysadmins in control of your HPC have a version of Python3.8+ installed already,
+then that makes installing the dependencies with `poetry` a breeze. 
 
+First, create a new python virtual environment in your remote HPC home directory (or directory of choice) with
+```bash 
+python3 -m venv .venv 
+```
+Then install poetry with
+```bash 
+~/.venv/bin/pip install -U pip setuptools
+~/.venv/bin/pip install poetry
+```
+Next, navigate to an appropriate project directory to clone the ColabFold GitHub repository in (do NOT install into the login node, otherwise the sysadmins will probably get mad) 
+```bash
+git clone https://github.com/sokrypton/ColabFold
+```
+Now install the dependencies with `poetry`
+```bash
+cd ColabFold
+~/.venv/bin/poetry install
+```
+`poetry` will recognise the `poetry.lock` file within the ColabFold repo and install the dependencies listed there.
+A virtual environment containing these dependencies can now be activated by running `poetry shell`.
+
+### Option 2: install with `conda`
+
+In my own case, the university HPC I use only has Python3.6.
+This isn't that big of an issue, because I can use `conda` to install any python version between >3.8 and <3.11 which `poetry` and ColabFold requires.
+In theory, I should be able to create a `conda` environment with Python3.8, install `poetry`, then install the ColabFold dependencies by running `poetry install` as described above.
+While I was able to use `poetry` from a conda environment, I ran into issues with the Colab notebook not recognising the `poetry shell` environment, and I'm not sure why. 
+I gave up on trying to make conda and poetry environments work together and instead decided to install all the dependencies into a conda environment.
+The following setup worked for me, though it required some trial and error:
+
+First, generate a conda friendly `requirements.txt` file from ColabFold's `poetry.lock` file with
+```bash
+git clone https://github.com/sokrypton/ColabFold 
+cd ColabFold
+poetry export --without-hashes --without-urls \
+| awk '{print $1}' FS=; \
+> requirements.txt
+```
+Install these dependencies into your remote HPC's conda environment
+```bash
+conda activate
+conda create -n <ENV_NAME>
+conda activate <ENV_NAME>
+conda install --file requirements.txt
+```
+I had issues installing specific versions of few dependencies, namely tensorflow, libclang, setuptools, and dm-haiku.
+So I decided to install just the latest versions of each, and thankfully this didn't cause any incompatibilities.
+```bash
+conda install tensorflow libclang setuptools dm-haiku
+```
+I also needed to install jupyter (of course) and google-colab
+```bash
+conda install jupyter google-colab
+```
+Basically, if I noticed the ColabFold notebook running on my local instance threw an error for missing a dependency,
+I went ahead and installed that into the conda environment and tried again.
+Not an elegant solution, but I got there.
 
 ## 2. `sbatch` script setup
+
+Setting up the conda environment is the probably the hardest step.
+Next we need to setup a `sbatch` script that will make us a jupyter notebook environment that we can connect to via ssh.
+Create the script with `touch run-colab-notebook.sh` and populate its contents with relevant info like so 
+
+```bash
+#!/bin/bash
+#SBATCH --job-name="colab-notebook"
+#SBATCH --account=<YOUR_PROJECT_ACCOUNT_NAME>
+#SBATCH --time=2:00:00      # alter time as seen fit 
+#SBATCH --partition=gpu 
+#SBATCH --gres=gpu:A40:1    # choose an appropriate gpu partition
+#SBATCH --ntasks=1 
+#SBATCH --mem=200G          # alter RAM as seen fit
+#SBATCH --chdir="/home/username/path/to/project-dir"
+#SBATCH --error=notebook_log_%j.err 
+
+module purge
+source /home/user/path/to/your/miniconda/bin/activate 
+conda activate {YOUR_COLAB_ENV}
+
+export XDG_RUNTIME_DIR=""
+login_node="m3.massive.org.au" # your HPC server here
+port=$1
+
+jupyter notebook \
+  --NotebookApp.allow_origin='https://colab.research.google.com' \
+  --port=${port} \
+  --NotebookApp.port_retries=0
+wait
+
+```
+The ColabFold result files will be output in the directory specified by `#SBATCH --chdir=`, so it's important to set that to somewhere useful. Same goes for the `.err` file, which we'll need for the Jupyter notebook token in step 6.
+
+
 
 ## 3. Find open ssh port
 
