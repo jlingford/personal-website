@@ -7,3 +7,6 @@
 [submodule "themes/modified-hugo-blog"]
 	path = themes/modified-hugo-blog
 	url = https://github.com/jlingford/modified-hugo-blog.git
+[submodule "themes/themes/modified-hugo-blog"]
+	path = themes/themes/modified-hugo-blog
+	url = https://github.com/jlingford/modified-hugo-blog.git
