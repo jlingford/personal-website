@@ -220,17 +220,26 @@ Create the script with `touch run-colab-notebook.sh` and populate its contents w
 #SBATCH --partition=gpu 
 #SBATCH --gres=gpu:A40:1    # choose an appropriate gpu partition
 #SBATCH --ntasks=1 
+#SBATCH --ntasks-per-node=1 
+#SBATCH --cpus-per-task=16
 #SBATCH --mem=200G          # alter RAM as seen fit
 #SBATCH --chdir="/home/username/path/to/project-dir"
 #SBATCH --error=notebook_log_%j.err 
 
+# if using poetry env
+module purge
+cd /home/user/path/to/ColabFold
+source /home/user/path/to/.venv/bin/activate
+poetry shell
+
+# if using conda env
 module purge
 source /home/user/path/to/your/miniconda/bin/activate 
 conda activate {YOUR_COLAB_ENV}
 
 export XDG_RUNTIME_DIR=""
 login_node="m3.massive.org.au" # your HPC server here
-port=$1
+port={PORT_NUMBER_HERE}
 
 jupyter notebook \
   --NotebookApp.allow_origin='https://colab.research.google.com' \
@@ -239,15 +248,59 @@ jupyter notebook \
 wait
 
 ```
+Be sure to edit this template to only include either the poetry or conda virtual
+environment, as well as edit details specific to your use case.
 The ColabFold result files will be output in the directory specified by `#SBATCH --chdir=`, so it's important to set that to somewhere useful. Same goes for the `.err` file, which we'll need for the Jupyter notebook token in step 6.
-
-
+The "port" must be included either by editing the
+sbatch script directly in an editor if you are going off of this template as is.
+Speaking of the port, that's the next step.
 
 ## 3. Find open ssh port
 
+You can find an open port on your remote HPC server by running the command
+```bash
+ss -ltr
+```
+or alternatively with
+```bash
+netstat -ant | grep LISTEN
+```
+Either will print an output that looks something like this:
+
+![open_ports](/images/ss-ltr.png)
+
+For simplicity I tend to stick with the first port listed with a `*` under the column
+"Local Address", as this is a listening port on the HPC localhost. 
+
 ## 4. Submit Jupyter notebook job to GPU node
 
-## 5. Setup `.ssh/config` on local side and login
+After choosing an open port number, we can provide it to the `sbatch` script from Step 2
+and submit it to the Slurm job scheduler like so:
+```bash
+sbatch run-colab-notebook.sh <PORT_NUMBER>
+```
+If the sbatch script has all the relevant information, we should be provided with a Job_ID
+number immediately.
+Take note of this number because it helps us identity the `.err` file we'll need to read
+in moment.
+Assuming that the GPU partition we requested is free and there are no other jobs scheduled
+ahead of us, we will be at the front of the job queue.
+Even if we're at the front of the queue, the actual jupyter notebook may take a minute to get up and running on the GPU.
+We can check the progress of the job with,
+```bash
+squeue -u $USER
+```
+If you see that time has passed by in the "TIME" column, then our jupyter notebook is up
+and running.
+Our `notebook_log_<JOB_ID>.err` file will now have the jupyter token written into it and
+will look something like this when opened in an editor:
+
+![jupytertoken](/images/jupytertoken.png)
+
+Copy the jupyter token (i.e. the URL starting with http://localhost:...) to your system
+clipboard and paste it somewhere safe. We will need this for Step 6.
+
+## 5. `ssh` port forwarding to GPU node
 
 ## 6. Copy Jupyter token to ColabFold local runtime
 
