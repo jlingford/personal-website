@@ -6,7 +6,7 @@ title = 'James Lingford'
 theme = 'modified-hugo-blog'
 enableEmoji = true
 ignoreErrors = ["additional-script-loading-error"] # ignore error of loading additional scripts.
-
+disqusShortname = 'Comments'
 
 ########################### Markup settings ############################
 # set markup.highlight.noClasses=false to enable code highlight
@@ -29,7 +29,7 @@ ignoreErrors = ["additional-script-loading-error"] # ignore error of loading add
 #     url = '/'
 #     weight = 10
 [[menu.main]]
-    pageRef="posts"
+    pageRef="blog"
     name = 'Blog'
     url = '/blog/'
     weight = 30
@@ -54,7 +54,7 @@ ignoreErrors = ["additional-script-loading-error"] # ignore error of loading add
 [params]
     sitename = "James Lingford"
     defaultColor = "auto"
-    mainSections = ['posts']
+    mainSections = ['blog']
     toc = true
     goToTop = true
     dateFormat = "" # if nothing is specified then day-month-year format is used.
@@ -66,7 +66,7 @@ ignoreErrors = ["additional-script-loading-error"] # ignore error of loading add
     avatar = "james-avi3.jpg" # put the file in assets folder; also ensure that image has same height and width
     intro = "James Lingford"
     name = "James Lingford"
-    description = "A personal blog about proteins and evolution. Interested in learning protein design and computational biology skills, and then attempting to explain them to us poor wet-lab biologists."
+    description = "A personal blog about proteins and evolution. Interested in self-learning protein design, biophysics, and computational biology skills."
 
 [params.webmanifest]
     name = "jameslingford"
