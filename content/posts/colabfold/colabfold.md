@@ -44,7 +44,7 @@ A40, T4, and better still, the A100, which will run Alhafold/ColabFold in a coup
 hours to minutes (depending on the GPU, sequence length, sequence complexity, and other
 parameters of course).
 
-### A solution for some
+### A solution (for some)
 
 The solution I've found that works best for myself is running ColabFold on my university
 high performance computing (HPC) cluster which I have access to (Monash Uni's Massive M3 cluster).
@@ -159,7 +159,7 @@ Host <name-for-GPU-node-on-HPC>
 ```
 For example, here's how I've setup my ssh config which allows me to ssh into any compute node on my HPC (each node on my university HPC starts with "m3" followed by a specific number):
 
-![ssh-config](/image/)
+![ssh-config](/images/ssh-config.png)
 
 ## 1. Install ColabFold dependencies
 
@@ -281,7 +281,7 @@ Additionally, the optional Amber relax step can only be run on CPUs.
 * For simplicities sake, I usually request as much GPU RAM as possible under `--mem=`,
 though 200G tends to be plenty for proteins between 100-500 sequence length.
 
-## 3. Find open ssh port
+## 3. Find an open ssh port
 
 You can find an open port on your remote HPC server by running the command
 ```bash
@@ -336,7 +336,7 @@ ssh <username>@<NODE_ID>.<server_address> -L <PORT>:localport:<PORT>
 ```
 For example, here's what that looks like for myself when my job is running on the "m3a106" node:
 
-![ssh-node-without-ssh-config](/images/)
+![ssh-node-without-ssh-config](/images/ssh-node-login.png)
 
 Alternatively, if you setup a `~/.ssh/config` file as I described above, this command can be shortened to:
 ```bash
@@ -344,7 +344,7 @@ ssh <NODE_ID> -L <PORT>:localhost:<PORT>
 ```
 For example, here's what that looks like for myself when, once again, I have a job running on the "m3a106" node: 
 
-![port-forwarding](/images/)
+![port-forwarding](/images/sshlogin.png)
 
 If everything has been setup as expected, you won't be prompted for any passwords and you'll login straight away (you should see your host-id change the node-id in the bash prompt).
 If you are prompted for a password, then ssh isn't working.
@@ -379,16 +379,22 @@ rsync -avz -e ssh username@remoteserver:/home/user/path/to/output/results.zip /h
 ```
 And that's everything. I hope you've found this helpful.
 
+___
+
 ## References and further reading
 
-Mirdita M, Schütze K, Moriwaki Y, Heo L, Ovchinnikov S and Steinegger M. ColabFold: Making protein folding accessible to all.
+***ColabFold and protein structure prediction***
+* Mirdita M, Schütze K, Moriwaki Y, Heo L, Ovchinnikov S and Steinegger M. ColabFold: Making protein folding accessible to all.
 Nature Methods (2022) doi: 10.1038/s41592-022-01488-1
-
-Jumper et al. "Highly accurate protein structure prediction with AlphaFold."
+* Jumper et al. "Highly accurate protein structure prediction with AlphaFold."
 Nature (2021) doi: 10.1038/s41586-021-03819-2
-
-Evans et al. "Protein complex prediction with AlphaFold-Multimer."
+* Evans et al. "Protein complex prediction with AlphaFold-Multimer."
 biorxiv (2021) doi: 10.1101/2021.10.04.463034v1
-
-Minkyung et al. "Accurate prediction of protein structures and interactions using a three-track neural network."
+* Minkyung et al. "Accurate prediction of protein structures and interactions using a three-track neural network."
 Science (2021) doi: 10.1126/science.abj8754
+
+***`ssh` resources***
+
+***Virtual environments***
+
+
