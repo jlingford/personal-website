@@ -6,7 +6,7 @@ title = 'James Lingford'
 theme = 'modified-hugo-blog'
 enableEmoji = true
 ignoreErrors = ["additional-script-loading-error"] # ignore error of loading additional scripts.
-disqusShortname = 'Comments'
+# disqusShortname = 'Comments'
 
 ########################### Markup settings ############################
 # set markup.highlight.noClasses=false to enable code highlight
@@ -57,7 +57,7 @@ disqusShortname = 'Comments'
     mainSections = ['blog']
     toc = true
     goToTop = true
-    dateFormat = "" # if nothing is specified then day-month-year format is used.
+    dateFormat = "2006.01.02" # if nothing is specified then day-month-year format is used.
     description = "Minimal blog written by James Lingford"
     additionalScripts = ['js/custom.js', 'js/constom-2.js']
     rssFeedDescription = "summary"
