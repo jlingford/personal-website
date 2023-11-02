@@ -239,7 +239,7 @@ conda activate {YOUR_COLAB_ENV}
 
 export XDG_RUNTIME_DIR=""
 login_node="m3.massive.org.au" # your HPC server here
-port={PORT_NUMBER_HERE}
+port={PORT_NUMBER_HERE*}
 
 jupyter notebook \
   --NotebookApp.allow_origin='https://colab.research.google.com' \
@@ -248,12 +248,16 @@ jupyter notebook \
 wait
 
 ```
-Be sure to edit this template to only include either the poetry or conda virtual
+Some important notes worth mentioning with this example sbatch script:
+* Be sure to edit this template to only include either the poetry or conda virtual
 environment, as well as edit details specific to your use case.
-The ColabFold result files will be output in the directory specified by `#SBATCH --chdir=`, so it's important to set that to somewhere useful. Same goes for the `.err` file, which we'll need for the Jupyter notebook token in step 6.
-The "port" must be included either by editing the
-sbatch script directly in an editor if you are going off of this template as is.
-Speaking of the port, that's the next step.
+* The ColabFold result files will be output in the directory specified by `#SBATCH --chdir=`, so it's important to set that to somewhere useful. Same goes for the `.err` file, which we'll need for the Jupyter notebook token in step 6.
+* The "port" must be included (how to find an open port is described in the next step)
+* It's necessary to specify a number of CPUs under `--cpus-per-task=` for the ColabFold code to run at all.
+This is because ColabFold runs the initial MMseqs2 step for generating an MSA with CPUs, not GPUs.
+Additionally, the optional Amber relax step can only be run on CPUs.
+* For simplicities sake, I usually request as much GPU RAM as possible under `--mem=`,
+though 200G tends to be plenty for proteins between 100-500 sequence length.
 
 ## 3. Find open ssh port
 
@@ -301,6 +305,14 @@ Copy the jupyter token (i.e. the URL starting with http://localhost:...) to your
 clipboard and paste it somewhere safe. We will need this for Step 6.
 
 ## 5. `ssh` port forwarding to GPU node
+
+With the job now running on a GPU node, we need to connect to that specific node over `ssh` with local port forwarding applied.
+First, exit from the HPC remote server so we're back in our local terminal.
+Next, we `ssh` into the remote GPU node with local port forwarding with
+```bash
+ssh <NODE_ID> -L <PORT>:localhost:<PORT>
+```
+
 
 ## 6. Copy Jupyter token to ColabFold local runtime
 
