@@ -64,24 +64,23 @@ Colab notebook on your HPC too.
 
 ## Prerequisites
 
-Some things I'm going to assume you have setup already are:
+Some things we need to have setup on our local machine beforehand are:
 
 * A Linux command line environment, like having a linux operating system, a MacOS, or the
   Windows Subsystem for Linux (WSL) if you're a Windows user
 * access to a HPC, with permission to use some of the GPU partitions (preferably an A40, T4, or A100
   GPU)
-* a `ssh` keypair to login to your HPC without the need for passwords
-* a `conda` environment with jupyter notebook installed
+* a `conda` environment with on our remote HPC server
+* **a `ssh` keypair to login to your HPC without the need for passwords**
 
 If you don't have the second point setup yet, you should contact your HPC's system administrators and request all the access you need.
 
-If you haven't setup an `ssh` keypair yet, I highly recommend you do so because it makes
-logging in to your HPC so much easier (and more secure) than relying on typing in
-passwords over and over. It will also be crucial for the `ssh` port forwarding step required to
-make this whole thing work (specifically in Step #5).
+Having the `ssh` keypair setup is essential for this entire method of running ColabFold to work at all, 
+so we'll go through how to do this first.
 
-Briefly, to setup a `ssh` keypair run the following on the terminal of your local machine (not logged into
-your HPC).
+### `ssh` setup
+
+Run the following on the terminal of your local machine (i.e. not logged into your HPC).
 
 ```bash
 ssh keygen -b 4096 -t rsa -C "Add your own personal comment between quotes"
@@ -123,7 +122,7 @@ No need to specify the path to the key here. This command will copy the public k
 `~/.ssh/authorized_keys` file on your HPC. If the file `authorized_keys` didn't already
 exist, it creates one automatically.
 
-Now you should be able to login to your HPC over ssh by simply typing
+Now you should be able to login to your HPC without being prompted for a password by simply typing
 
 ```bash
 ssh username@remoteserver
@@ -138,6 +137,29 @@ If this happens, it would render those keys ineffective. It's an easy fix though
 just make sure every key appears on its own separate line by checking `authorized_keys` in
 your favourite terminal editor like `vim` or `nano`
 
+#### A note about `ssh config`
+
+I highly recommend having a `ssh config` file, as they're a powerful tool for ssh'ing into remote servers more efficiently,
+as well as managing multiple ssh keys for accessing multiple remote servers.
+It will also make the `ssh` port forwarding into a GPU node easier later on.
+
+You can find the ssh config file under `~/.ssh/config`. If you don't have one you can easily create one with `touch ~/.ssh/config`.
+Here's a basic `ssh config` template:
+
+```ssh
+Host <name-for-your-HPC>
+    User <your-username-on-the-HPC>
+    HostName <HPC-server-address>
+    IdentityFile /home/username/.ssh/<ssh-key-name>
+
+Host <name-for-GPU-node-on-HPC>
+    User <username>
+    HostName %h 
+    ProxyCommand ssh <name-for-your-HPC> -W %h:22
+```
+For example, here's how I've setup my ssh config which allows me to ssh into any compute node on my HPC (each node on my university HPC starts with "m3" followed by a specific number):
+
+![ssh-config](/image/)
 
 ## 1. Install ColabFold dependencies
 
@@ -310,12 +332,63 @@ With the job now running on a GPU node, we need to connect to that specific node
 First, exit from the HPC remote server so we're back in our local terminal.
 Next, we `ssh` into the remote GPU node with local port forwarding with
 ```bash
+ssh <username>@<NODE_ID>.<server_address> -L <PORT>:localport:<PORT>
+```
+For example, here's what that looks like for myself when my job is running on the "m3a106" node:
+
+![ssh-node-without-ssh-config](/images/)
+
+Alternatively, if you setup a `~/.ssh/config` file as I described above, this command can be shortened to:
+```bash
 ssh <NODE_ID> -L <PORT>:localhost:<PORT>
 ```
+For example, here's what that looks like for myself when, once again, I have a job running on the "m3a106" node: 
 
+![port-forwarding](/images/)
+
+If everything has been setup as expected, you won't be prompted for any passwords and you'll login straight away (you should see your host-id change the node-id in the bash prompt).
+If you are prompted for a password, then ssh isn't working.
+Double check that your keypair has been setup correctly and the ssh client still has access to your keys with `ssh-add -l`.
 
 ## 6. Copy Jupyter token to ColabFold local runtime
 
-## 7. Saving output and potential issues
+Now for the moment of truth. 
+In in the ColabFold notebook, click on the small downwards pointing arrow in the top-right corner (just below the settings symbol).
+Click it and select "Connect to a local runtime" in the dropdown menu. 
+A "local connection settings" window will pop-up with an empty field where you can paste in your jupyter token (which we got in Step 4).
+Hit "Connect" and wait a moment.
+If everything has been setup correctly we will see a green tick appear at the bottom of the notebook screen saying that we're connected to a local runtime!
+
+>**Note 1:** make sure you aren't using a VPN, otherwise it will likely not connect.
+
+>**Note 2:** I've experienced issues with certain internet browsers, such as the Brave browser, which won't allow the connection to go through (likely because of security features getting in the way). I find that vanilla Chrome or Firefox work the best.
+
+With a connection established, we can finally run the ColabFold code.
+Enter your protein sequence of interest into the `query_sequence` field, change the parameters that you want to change, and hit "Run all" under the "Runtime" tab at the top of the notebook window.
+If our virtual environment running on the remote HPC server has all the necessary dependencies, the code should run smoothly to completion.
+The first time I setup my conda environment I must've missed installing a few dependencies, because the ColabFold code would terminate prematurely.
+Thankfully, Colab notebooks have good error messages, so it was obvious what I needed to install into the conda environment and try again.
+
+## 7. Saving output 
+
+When your ColabFold job is finished, the results will be saved in a .zip folder inside the remote directory which you specified in the `sbatch` script under the `--chdir=` flag.
+Double check that it's where you expect and then copy them to your local machine.
+I find the quickest way to retrieve the ColabFold results is to run the following `rsync` command on your local terminal:
+```bash
+rsync -avz -e ssh username@remoteserver:/home/user/path/to/output/results.zip /home/user/path/to/local/target/dir 
+```
+And that's everything. I hope you've found this helpful.
 
 ## References and further reading
+
+Mirdita M, Schütze K, Moriwaki Y, Heo L, Ovchinnikov S and Steinegger M. ColabFold: Making protein folding accessible to all.
+Nature Methods (2022) doi: 10.1038/s41592-022-01488-1
+
+Jumper et al. "Highly accurate protein structure prediction with AlphaFold."
+Nature (2021) doi: 10.1038/s41586-021-03819-2
+
+Evans et al. "Protein complex prediction with AlphaFold-Multimer."
+biorxiv (2021) doi: 10.1101/2021.10.04.463034v1
+
+Minkyung et al. "Accurate prediction of protein structures and interactions using a three-track neural network."
+Science (2021) doi: 10.1126/science.abj8754

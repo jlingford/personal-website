@@ -11,6 +11,7 @@ about, or interesting things I've been reading.
 Currently, I'm trying to learn how to do structural bioinformatics and use these skills more in my
 day to day research.
 I'm also trying to learn how to computationally design proteins *de novo*.
+I figure that if I write down things I've learned about, then not only will I remember it much better, but someone else encountering the same problem will have an easier time too.
 So I hope you join me on this long journey of trying to keep up to date with the
 state-of-the-art in the protein science field.
 In general, my research interests mainly revolve around proteins and molecular evolution.
@@ -23,15 +24,18 @@ smaller technical questions, like "how the hell do I run this Python script?", t
 at some point one can hope to answer those bigger questions.
 
 ## Bio
-I'm a research officer based at Monash Uni in Melbourne Australia, where I'm currently researching various proteins
-that extract energy from trace gases. I started out doing an undergraduate
-degree in genetics at the
-University of Western Australia. When I finished undergrad, I figured I wasn't ready to
-embark on a PhD because I didn't really know what I wanted to do. I managed to
-get work as a research assistant at the Harry Perkins Institute of Medical Research
-(Perth, Western Australia), where it turns out I had a knack for protein
-biochemistry in the lab. Later on, I moved interstate after I managed to land an RA job at WEHI (Melbourne, Victoria) and did even more protein biochemistry work.
+I'm a protein scientist and research officer based at Monash Uni in Melbourne Australia, where I'm currently investigating proteins
+that extract energy from trace gases. 
+
+I started out doing an undergraduate degree in genetics at the University of Western Australia. 
+When I finished undergrad, I held off on trying to do a PhD because I didn't really know what I wanted to do. 
+I managed to get work as a research assistant at the Harry Perkins Institute of Medical Research
+(Perth, Western Australia), where it turns out I had a knack for protein biochemistry in the lab. 
+Later on, I moved interstate after I managed to land an RA job at WEHI (Melbourne, Victoria) and did even more protein biochemistry work.
+My research skills are primarily wet-lab based, though I've been slowly trying to evolve into a skilled "dry-lab" scientist too.
+With the fast speed at which the protein science field is moving, I figure it's more important than ever to be a well rounded scientist.
+
 Melbourne is a good place to do science (especially protein science) and a good place to
 live (at least in my opinion), so I'm planning to live here for life.
 When I'm not in the lab or on the computer, I like to hang out with my wife and two dogs.
-And sometimes, if there's time, get to read a book.
+Sometimes, if there's time, I like to read a book.
