@@ -1,5 +1,6 @@
 +++
-title = 'How to run the ColabFold notebook on a HPC over ssh'
+title = 'How to run the ColabFold notebook on a HPC over SSH'
+author = 'by James Lingford'
 date = 2023-10-29T12:24:45+11:00
 draft = false
 toc = true
@@ -15,7 +16,7 @@ categories = ['computational biology', 'how to']
 ColabFold is amazing. If you haven't heard of it yet, it's basically a user friendly
 implementation of AlphaFold2 with a significantly faster multiple sequence alignment (MSA)
 step. You can run it straight from a [Google Colab notebook](https://colab.research.google.com/github/sokrypton/ColabFold/blob/main/AlphaFold2.ipynb) for free,
-and it gives you numerous options to change the Alphafold parameters without messing around
+and it gives you numerous options to change the AlphaFold parameters without messing around
 with scripting. Furthermore, ColabFold outputs beautiful publication ready plots in .png form of the MSA, pLDDT, and PAE data,
 as well as giving you a well organised .zip folder with all the results and .pdb models.
 The ColabFold authors (namely Sergey Ovchinnikov) have also made [other Colab notebooks](https://github.com/sokrypton/ColabFold) that
@@ -37,17 +38,17 @@ computer and run the ColabFold job through your personal GPU resources. This opt
 getting better because it's free (ignoring your power bill) and you're not relying on
 Google's fickle GPU allocation system. However, this still isn't ideal for myself and most
 people, who only have a standard laptop GPU available (I have a NVIDIA GeForce GTX 1650 Ti running on my Dell XPS 17 9700).
-These sorts of GPUs aren't powerful enough to run Alphafold/ColabFold in a reasonable amount of time
+These sorts of GPUs aren't powerful enough to run AlphaFold/ColabFold in a reasonable amount of time
 and will likely most of your day depending on the size of the protein sequence submitted.
 It's best to stick with higher end GPUs common in machine learning work, like NVIDIA's
-A40, T4, and better still, the A100, which will run Alhafold/ColabFold in a couple of
+A40, T4, and better still, the A100, which will run AlphaFold/ColabFold in a couple of
 hours to minutes (depending on the GPU, sequence length, sequence complexity, and other
 parameters of course).
 
 ### A solution (for some)
 
 The solution I've found that works best for myself is running ColabFold on my university
-high performance computing (HPC) cluster which I have access to (Monash Uni's Massive M3 cluster).
+high performance computing (HPC) cluster that I have access to (Monash Uni's Massive M3 cluster).
 Of course, not everyone has access to a HPC, but I assume that if you're running AlphaFold a lot,
 there's a good chance you're a researcher at a university to begin with, so that makes
 you the target audience of this blog post! Most universities have a HPC that will grant
@@ -58,7 +59,7 @@ your computational needs.
 Working with a HPC can be tricky though. And trying to connect a Colab notebook like
 ColabFold to a HPC is not straightforward for a novice. So, in an attempt to provide some
 clarity to this issue, **here's my guide on how to connect the ColabFold notebook to a local
-runtime on your university HPC over ssh**. Keep in mind, this guide is broadly applicable to running any
+runtime on your university HPC over SSH**. Keep in mind, this guide is broadly applicable to running any
 Colab notebook on your HPC too.
 
 
@@ -71,14 +72,14 @@ Some things we need to have setup on our local machine beforehand are:
 * access to a HPC, with permission to use some of the GPU partitions (preferably an A40, T4, or A100
   GPU)
 * a `conda` environment with on our remote HPC server
-* **a `ssh` keypair to login to your HPC without the need for passwords**
+* **a SSH keypair to login to your HPC without the need for passwords**
 
 If you don't have the second point setup yet, you should contact your HPC's system administrators and request all the access you need.
 
-Having the `ssh` keypair setup is essential for this entire method of running ColabFold to work at all, 
+Having the SSH keypair setup is essential for this entire method of running ColabFold to work at all, 
 so we'll go through how to do this first.
 
-### `ssh` setup
+### SSH setup
 
 Run the following on the terminal of your local machine (i.e. not logged into your HPC).
 
@@ -94,9 +95,9 @@ remember for an extra layer of security.
 This will generate the keypair in your `~/.ssh` folder, which consists of a *public* key and a *private* key.
 The private key stays exactly where it is, while the public key (denoted by the `.pub` file extension) is what we need to send to the remote `~/.ssh` folder on your HPC.
 You can simply copy and paste the contents of the public key to remote `~/.ssh/authorized_keys` on your HPC.
-Alternatively, I prefer using other ssh command line tools to achieve the same outcome,
+Alternatively, I prefer using other SSH command line tools to achieve the same outcome,
 which saves me from the potential for human error involved in manual copy and pasting.
-To do this, first add your new ssh key to the ssh client like so:
+To do this, first add your new SSH key to the SSH client like so:
 
 ```bash
 ssh-add ~/.ssh/<KEY_NAME>
@@ -109,7 +110,7 @@ automatically. It's good to double check this command worked as expected with,
 ssh-add -l
 ```
 
-This should list the various keys you have setup on your ssh client, including your new
+This should list the various keys you have setup on your SSH client, including your new
 keypair you just made for the HPC.
 
 Next, add the public key to your remote HPC server with,
@@ -139,11 +140,11 @@ your favourite terminal editor like `vim` or `nano`
 
 #### A note about `ssh config`
 
-I highly recommend having a `ssh config` file, as they're a powerful tool for ssh'ing into remote servers more efficiently,
-as well as managing multiple ssh keys for accessing multiple remote servers.
+I highly recommend having a `ssh config` file, as they're a powerful tool for SSH'ing into remote servers more efficiently,
+as well as managing multiple SSH keys for accessing multiple remote servers.
 It will also make the `ssh` port forwarding into a GPU node easier later on.
 
-You can find the ssh config file under `~/.ssh/config`. If you don't have one you can easily create one with `touch ~/.ssh/config`.
+You can find the SSH config file under `~/.ssh/config`. If you don't have one you can easily create one with `touch ~/.ssh/config`.
 Here's a basic `ssh config` template:
 
 ```ssh
@@ -157,7 +158,7 @@ Host <name-for-GPU-node-on-HPC>
     HostName %h 
     ProxyCommand ssh <name-for-your-HPC> -W %h:22
 ```
-For example, here's how I've setup my ssh config which allows me to ssh into any compute node on my HPC (each node on my university HPC starts with "m3" followed by a specific number):
+For example, here's how I've setup my SSH config which allows me to SSH into any compute node on my HPC (each node on my university HPC starts with "m3" followed by a specific number):
 
 ![ssh-config](/images/ssh-config.png)
 
@@ -231,7 +232,7 @@ Not an elegant solution, but I got there.
 ## 2. `sbatch` script setup
 
 Setting up the conda environment is the probably the hardest step.
-Next we need to setup a `sbatch` script that will make us a jupyter notebook environment that we can connect to via ssh.
+Next we need to setup a `sbatch` script that will make us a jupyter notebook environment that we can connect to via SSH.
 Create the script with `touch run-colab-notebook.sh` and populate its contents with relevant info like so 
 
 ```bash
@@ -281,7 +282,7 @@ Additionally, the optional Amber relax step can only be run on CPUs.
 * For simplicities sake, I usually request as much GPU RAM as possible under `--mem=`,
 though 200G tends to be plenty for proteins between 100-500 sequence length.
 
-## 3. Find an open ssh port
+## 3. Find an open SSH port
 
 You can find an open port on your remote HPC server by running the command
 ```bash
@@ -326,7 +327,7 @@ will look something like this when opened in an editor:
 Copy the jupyter token (i.e. the URL starting with http://localhost:...) to your system
 clipboard and paste it somewhere safe. We will need this for Step 6.
 
-## 5. `ssh` port forwarding to GPU node
+## 5. SSH port forwarding to GPU node
 
 With the job now running on a GPU node, we need to connect to that specific node over `ssh` with local port forwarding applied.
 First, exit from the HPC remote server so we're back in our local terminal.
@@ -375,7 +376,7 @@ When your ColabFold job is finished, the results will be saved in a .zip folder 
 Double check that it's where you expect and then copy them to your local machine.
 I find the quickest way to retrieve the ColabFold results is to run the following `rsync` command on your local terminal:
 ```bash
-rsync -avz -e ssh username@remoteserver:/home/user/path/to/output/results.zip /home/user/path/to/local/target/dir 
+rsync -avz -e ssh username@remoteserver:/home/user/path/to/output/results.zip ~/path/to/local/dir 
 ```
 And that's everything. I hope you've found this helpful.
 
@@ -384,17 +385,33 @@ ___
 ## References and further reading
 
 ***ColabFold and protein structure prediction***
-* Mirdita M, Schütze K, Moriwaki Y, Heo L, Ovchinnikov S and Steinegger M. ColabFold: Making protein folding accessible to all.
-Nature Methods (2022) doi: 10.1038/s41592-022-01488-1
-* Jumper et al. "Highly accurate protein structure prediction with AlphaFold."
-Nature (2021) doi: 10.1038/s41586-021-03819-2
-* Evans et al. "Protein complex prediction with AlphaFold-Multimer."
-biorxiv (2021) doi: 10.1101/2021.10.04.463034v1
-* Minkyung et al. "Accurate prediction of protein structures and interactions using a three-track neural network."
-Science (2021) doi: 10.1126/science.abj8754
 
-***`ssh` resources***
+* [The ColabFold github page](https://github.com/sokrypton/ColabFold)
+* Mirdita M, Schütze K, Moriwaki Y, Heo L, Ovchinnikov S and Steinegger M. ColabFold: Making protein folding accessible to all.
+*Nature Methods* (2022) doi: [10.1038/s41592-022-01488-1](https://www.nature.com/articles/s41592-022-01488-1) 
+* Jumper et al. "Highly accurate protein structure prediction with AlphaFold."
+*Nature* (2021) doi: [10.1038/s41586-021-03819-2](https://www.nature.com/articles/s41586-021-03819-2)
+* Evans et al. "Protein complex prediction with AlphaFold-Multimer."
+*bioRxiv* (2021) doi: [10.1101/2021.10.04.463034v1](https://www.biorxiv.org/content/10.1101/2021.10.04.463034v1)
+* Minkyung et al. "Accurate prediction of protein structures and interactions using a three-track neural network."
+*Science* (2021) doi: [10.1126/science.abj8754](https://www.science.org/doi/10.1126/science.abj8754)
+
+***SSH resources***
+
+* [SSH, The Secure Shell: The Definitive Guide](https://www.oreilly.com/library/view/ssh-the-secure/0596008953/)
+* [SSH tutorial by the University of Heidelberg](https://zah.uni-heidelberg.de/it-guide/ssh-tutorial-linux#:~:text=SSH%20is%20a%20secure%20protocol,remote%20server%20and%20executed%20there)
+* [Jupyter on HPC Clusters guide by Princeton University](https://researchcomputing.princeton.edu/support/knowledge-base/jupyter)
+* [The HPC wiki](https://hpc-wiki.info/hpc/HPC-Dictionary)
+* [Using the SSH config file, by Linuxize](https://linuxize.com/post/using-the-ssh-config-file/)
+* [How to set up SSH Tunneling, by Linuxize](https://linuxize.com/post/how-to-setup-ssh-tunneling/)
+* [Helpful blog post by ku.io](https://ku.io/using-a-hpc-as-google-colab-runtime/)
 
 ***Virtual environments***
 
+* [The miniconda documentation](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-conda.html)
+* [Python poetry documentation](https://python-poetry.org/docs/)
+
+***Colab notebook help***
+
+* [Local runtimes guide](https://research.google.com/colaboratory/local-runtimes.html)
 
