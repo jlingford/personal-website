@@ -2,7 +2,7 @@
 title = 'How to outline regions of a structure in ChimeraX'
 author = 'by James Lingford'
 date = 2023-11-04T16:58:22+11:00
-draft = true
+draft = false
 toc = true
 +++
 
