@@ -8,7 +8,7 @@ toc = true
 
 ## Inspiration
 
-Recently I was reading [Reliable protein-protein docking with AlphaFold, Rosetta and replica-exchange](https://www.biorxiv.org/content/10.1101/2023.07.28.551063v1) by Harmalkar, Lyskov, and Gray, and noticed their figures have a clever approach to visualising structural regions of interest for the reader. Some examples below:
+Recently, I was reading [Reliable protein-protein docking with AlphaFold, Rosetta and replica-exchange](https://www.biorxiv.org/content/10.1101/2023.07.28.551063v1) by Harmalkar, Lyskov, and Gray. I noticed their figures have a clever approach to highlighting structural regions of interest for the reader. Some examples below:
 
 ![docking1](/images/chimerax-outlines/a.png)
 *Highlighting conformational differences between experimental structure and AF2 model*
@@ -19,15 +19,15 @@ Recently I was reading [Reliable protein-protein docking with AlphaFold, Rosetta
 ![docking3](/images/chimerax-outlines/c.png)
 *Highlighting conformational differences*
 
-I thought the combination of using transparency on non-outlined regions and outlines around opaque regions was a good
+I thought the use of using transparency on non-outlined regions in combination with using outlines around opaque regions was a good
 way to draw the readers attention towards parts of the structure you want to emphasise.
 It's especially effective for visualising structural comparisons between two or more similar structures (as this paper does).
 
 I wanted to replicate this in the UCSF ChimeraX software for myself.
-Unfortunately, it wasn't *immediately* clear how to achieve this because I thought it had something to do with changing
-the 'Silhouette' setting in ChimeraX (the outlines above look very similar to silhouettes, after all).
+Unfortunately, it wasn't *immediately* clear how to achieve this.
+I thought it had something to do with changing the 'Silhouette' setting in ChimeraX (the outlines above look very similar to silhouettes, after all).
 This was a red herring; the answer lied in the ["graphics"](https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/graphics.html) setting.
-So this short blog post is my attempt to clarify how to do this.
+This short blog post is my attempt to clarify how to do this.
 
 ## ChimeraX commands for region-specific outlines
 
@@ -51,8 +51,8 @@ This is really useful for highlighting structural similarity between two (or mor
 4. `graphics sel col black width 3`
 5. `trans sel 0 target ac`
 
-As an example, here's a structural superposition figure I made comparing the similarity between two proteins.
-The point I wanted to highlight was that only the "enzymatic core" of these proteins are structurally similar.
+Here's a structural superposition figure I made comparing the similarity between two proteins.
+The point I wanted to highlight was that only the enzymatic "core" of these proteins are structurally similar.
 
 ![superposition](/images/chimerax-outlines/d.png)
 *Highlighting regions of shared structural similarity between two proteins*
@@ -67,9 +67,10 @@ This will create an outline (or halo, if you will) around the protein surface.
 I think this looks much more pleasing than a standard black silhouette when turning the transparency of the surface up
 with `trans #1 80 target s`.
 It's also possible to have silhouettes on the cartoons and atoms of the protein underneath the transparent surface by
-setting `graphics sil t depthJump 0.2`. This will essentially make the silhouette lines invisible on the contours of the protein
+setting `graphics sil t depthJump 0.2`.
+This will essentially make the silhouette lines invisible on the contours of the protein
 surface, while keeping the silhouettes visible on the cartoons and atoms underneath.
-Here's an example of what that looks like
+Here's an example of what that looks like:
 
 ![teal](/images/chimerax-outlines/e.png)
 *A screenshot from ChimeraX*
