@@ -87,14 +87,6 @@ ignoreErrors = ["additional-script-loading-error"] # ignore error of loading add
     url = "https://ko-fi.com/jameslingford"
 
 [[params.socialIcons]]
-    name = "github"
-    url = "https://github.com/jlingford"
-
-[[params.socialIcons]]
-    name = "twitter"
-    url = "https://bsky.app/profile/dialecticbio.bsky.social"
-
-[[params.socialIcons]]
     name = "rss"
 
 [[params.socialIcons]]
@@ -102,7 +94,16 @@ ignoreErrors = ["additional-script-loading-error"] # ignore error of loading add
     url = "https://scholar.google.com/citations?user=4KSRHTUAAAAJ&hl=en"
 
 [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/jlingford"
+
+[[params.socialIcons]]
     name = "linkedin"
     url = "https://www.linkedin.com/in/jameslingford/"
+
+[[params.socialIcons]]
+    name = "twitter"
+    url = "https://bsky.app/profile/dialecticbio.bsky.social"
+
 
 
