@@ -18,8 +18,8 @@ The AF2 predicted hydrogenase structure does a great job of predicting where the
 a [4Fe-4S] cluster.
 You can see where the cluster *should* go into the structure.
 
-![apo-hydrogenase]()
-*an "apo" hydrogenase AF2 model*
+![apo-hydrogenase](/images/foldseek/apo.png)
+*An "apo" hydrogenase AF2 model*
 
 Such a structure is almost certainly biophysically impossible and would never exist in reality because the protein would
 collapse into the solvent void where the FeS cluster should be.
@@ -78,5 +78,28 @@ open those PDBs and my AF2 hydrogenase model of interest in UCSF ChimeraX.
 Then using the `matchmaker` command to align the structures, I could see if any of the FeS clusters in the PDB
 structures aligned with where I'd expect them to sit in my AF2 model.
 
+![overlap](/images/foldseek/fullview.png)
+*My AF2 model aligned with the two experimental structures found by FoldSeek*
+
+Taking a closer look at the FeS binding sites, we see an almost perfect overlap between my AF2 hydrogenase and the PDB
+hydrogenase FoldSeek found for me.
+
+![closeview1](/images/foldseek/closeview1.png)
+*FeS clusters from the PDB line up well with the AF2 model*
+
+![closeview2](/images/foldseek/closeview2.png)
+*The structures here are so well aligned that "transplanting" the FeS clusters requires no manual readjustment in
+ChimeraX*
+
+From there it was a simple matter of "transplanting" the cofactors from the PDBs into the AF2 model in ChimeraX.
+Only one of the cofactors required a fair deal of manual repositioning in space.
 
 ## What the future holds
+
+This approach to "filling" an AF2 model with its missing cofactors/ligands is fun, though admittedly more of an art than
+a science.
+For the time being, it's a quick fix to this problem.
+However, it may not be a problem for much longer, as Google's DeepMind and Isomorphic Labs announced that they've
+developed the next iteration of AlphaFold that can predict cofactors/ligands too: [A Glimpse of the next Generation of AlphaFold](https://www.isomorphiclabs.com/articles/a-glimpse-of-the-next-generation-of-alphafold)
+
+
