@@ -2,7 +2,7 @@
 title = 'Adding cofactors to AlphaFold models with help from FoldSeek'
 author = 'by James Lingford'
 date = 2023-11-04T22:54:42+11:00
-draft = true
+draft = false
 toc = true
 math = true
 +++
