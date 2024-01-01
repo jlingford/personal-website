@@ -17,6 +17,9 @@ Hydrogenases contain iron-sulfur (FeS) clusters and the Fe atoms bond with the S
 The AF2 predicted hydrogenase structure does a great job of predicting where the four cysteine residues would coordinate with
 a [4Fe-4S] cluster.
 You can see where the cluster *should* go into the structure.
+[@Bird2021][^1]
+
+[^1]: footnote
 
 ![apo-hydrogenase](/images/foldseek/apo.png)
 *An "apo" hydrogenase AF2 model*
