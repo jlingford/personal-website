@@ -11,6 +11,7 @@ ignoreErrors = ["additional-script-loading-error"] # ignore error of loading add
 ########################### Markup settings ############################
 # set markup.highlight.noClasses=false to enable code highlight
 [markup]
+    defaultMarkdownHandler = 'goldmark'
     [markup.highlight]
         noClasses = false
     [markup.goldmark.renderer]
@@ -20,6 +21,16 @@ ignoreErrors = ["additional-script-loading-error"] # ignore error of loading add
             endLevel = 5 # ToC ends at H4
             ordered = false # generates <ul> instead of <ol>
 
+[security]
+    enableInlineShortcodes = false
+    [security.exec]
+        allow = ['^(dart-)?sass(-embedded)?$', '^go$', '^npx$', '^postcss$', '^pandoc$']
+        osEnv = ['(?i)^((HTTPS?|NO)_PROXY|PATH(EXT)?|APPDATA|TE?MP|TERM|GO\w+|(XDG_CONFIG_)?HOME|USERPROFILE|SSH_AUTH_SOCK|DISPLAY|LANG)$']
+    [security.funcs]
+        getenv = ['^HUGO_', '^CI$']
+    [security.http]
+        methods = ['(?i)GET|POST']
+        urls = ['.*']
 
 ########################### Banner menu ############################
 [menu]

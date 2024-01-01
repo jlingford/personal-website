@@ -4,4 +4,5 @@ author = 'by James Lingford'
 date = {{ .Date }}
 draft = true
 toc = true
+math = true
 +++
