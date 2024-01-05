@@ -14,6 +14,8 @@ This is some fucking text you piece of shit.[^1]
 
 And some more fucking text you wanker.[^bird]<sup>,</sup>[^roseman] Hellow
 
+This is a citation [@Bird_2021]
+
 $\alpha$
 
 [^1]: this is a footnote
