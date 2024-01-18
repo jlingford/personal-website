@@ -22,9 +22,11 @@ All configuration can be done in the `.vimrc` file in the home directory, which 
 ## My simple `.vimrc`
 
 ```vim
-" Use space for leader key
-let mapleader=" "
+set nocompatible
+let mapleader=' ' "use space for leader key
 filetype off "required for Vundle
+" Cursor behaviour
+:autocmd InsertEnter,InsertLeave * set cul!
 " General visual look of Vim
 set number relativenumber
 set ruler
@@ -55,13 +57,13 @@ set scrolloff=3
 set showcmd
 set wildmenu
 " Colors
-set t_Co=256
 set background=dark
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 
 " Remappings
-imap JJ <ESC> "hit double upper case J in quick succession to exit insert mode.
+" Exit insert mode by double tapping uppercase J
+imap JJ <ESC>
 " Autocomplete brackets and quotation marks
 inoremap ( ()<ESC>hli
 inoremap { {}<ESC>hli
@@ -69,13 +71,12 @@ inoremap [ []<ESC>hli
 inoremap ' ''<ESC>hli
 inoremap " ""<ESC>hli
 inoremap ` ``<ESC>hli
-" Swap colon and semicolon, makes entering command mode quicker
+" Swap colon and semicolon keys to make entering command mode easier
 nnoremap ; :
 nnoremap : ;
-" If indenting a line while in visual mode, don't exit visual mode
+" Don't exit visual mode after indenting
 vnoremap > >gv
 vnoremap < <gv
-
 
 " Plugins
 " set the runtime path to include Vundle and initialize
@@ -93,6 +94,9 @@ Plugin 'christoomey/vim-tmux-navigator'
 
 call vundle#end()
 filetype plugin indent on "required
+
+" Call after plugin is loaded
+colorscheme gruvbox
 ```
 
 If you are unsure of what any of these settings do, such as "`set smartindent`" for example, you can simply type `:help smartindent` to find out more.
