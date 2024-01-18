@@ -7,6 +7,8 @@ toc = false
 math = true
 +++
 
+![Vim logo](https://upload.wikimedia.org/wikipedia/commons/9/9f/Vimlogo.svg)
+
 To follow up my post about how to make [a simple TMUX config](https://www.jameslingford.com/blog/tmux-config/),
 I thought it would be fun to follow that up with another quick post about making a simple `.vimrc` config for those completely new to Vim.
 
