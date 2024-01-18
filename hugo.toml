@@ -77,7 +77,7 @@ ignoreErrors = ["additional-script-loading-error"] # ignore error of loading add
     avatar = "james-avi3.jpg" # put the file in assets folder; also ensure that image has same height and width
     intro = "James Lingford"
     name = "James Lingford"
-    description = "A personal blog about proteins and evolution. Interested in self-learning protein design, biophysics, and computational biology skills."
+    description = "Interested in proteins and evolution.\n Hoping to blog about things I've been learning about, including protein design, biophysics, computational biology skills, and Linux tools."
 
 [params.webmanifest]
     name = "jameslingford"

@@ -42,8 +42,17 @@ NOTE: After doing some Googling, it turns out the writer, James Clear, [has also
 
 I swear by keeping a planner. Once a week (usually a Monday morning, or a Friday evening) I like to sit down and plan what I need to do each day of the coming work week. 
 That includes scheduling time during certain parts of a day to do just the one task I hope to get done.
-I find that once I've planned out my time, I no longer have to constantly try to remember what I need to do; I can just read what I said I needed to do.
+I find that once I've planned out my time, I no longer have to constantly try to remember what I need to do; I can just read what I said I needed to do instead of expending mental energy trying to remember what I need to do.
 
 ### 2. Just write it down
 
+A very simple tip that I've had to learn the hard way, but now swear by: immediately write things down as soon as you need to.
+This doesn't just include things to put on a "to do" list, this involves all work that I may one day need to remember.
+As an example, I try to constantly write down small things I've learned about coding. 
+Even if I think it's painfully obvious, I know myself, and I know that after taking some time off from coding for a couple of weeks I will have forgetten some painfully obvious things.
+"How do I setup a new git repo and setup the ssh permissions again??", 
+I find these little questions to be stressful, hence raising my mental activation energy barrier.
+But if I've written down a list of instructions in a physical notebook, I know I can just reread that and get back up to speed.
 
+Could I just as easily Google some questions that I need a refresher on?
+Yes of course, but I personally find re-Googling something annoying and energy draining.
