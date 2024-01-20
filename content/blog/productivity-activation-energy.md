@@ -1,7 +1,7 @@
 +++
 title = 'Productivity tip: lower your "activation energy barriers"'
 author = 'by James Lingford'
-date = 2024-01-21T14:44:05+11:00
+date = 2024-01-19T14:44:05+11:00
 draft = false
 toc = true
 math = true
