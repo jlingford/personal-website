@@ -7,6 +7,8 @@ toc = true
 math = true
 +++
 
+![tmux-logo](https://upload.wikimedia.org/wikipedia/commons/e/e4/Tmux_logo.svg)
+
 ## Why use tmux?
 
 Tmux is a terminal multiplexer that is extremely useful when doing any remote SSH work.
