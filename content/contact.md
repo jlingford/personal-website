@@ -16,5 +16,5 @@ You can follow me elsewhere too at:
 * [GitHub](https://github.com/jlingford)
 <!-- * [Bluesky](https://bsky.app/profile/dialecticbio.bsky.social) -->
 
-If you find my posts helpful and would like to read more of them, please consider giving
-me a small tip on **[ko-fi](https://ko-fi.com/jameslingford)** ☕❤️
+If you find my posts helpful and would like to read more of them, 
+please consider buying my a coffee on **[ko-fi](https://ko-fi.com/jameslingford)** ☕❤️

@@ -19,8 +19,8 @@ This is partly why we tend to procrastinate about doing things.
 
 I've often thought of this mental energy as a sort of "activation energy" barrier as described in chemistry (symbolised as *E*<sub>a</sub>).
 Let's say there's a chemical reaction where substrates react to form a higher energy product.
-It's not enough for reaction to provide the same amount of energy stored in the final product, no,
-the reaction must provide an excess amount of energy to overcome the reactions activation energy.
+It's not enough for reaction to provide the same amount of energy stored in the final product;
+the reaction requires an excess amount of energy to overcome its activation energy.
 
 Extending this analogy to the subject of productivity, we are similarly as stubborn as a substrates of a chemical reaction.
 We require "hidden" levels of energy to do something as simple as read a book, or write that manuscript we said we'd write.
@@ -50,10 +50,10 @@ I can just read what I said I needed to do instead of expending mental energy tr
 
 ### 2. Write down what you've learnt, even if you don't think you need to
 
-A very simple tip that I've had to learn the hard way, but now swear by: immediately write things down as soon as you need to.
+A very simple tip that I've had to learn the hard way, but now swear by: immediately write things down as soon as you can.
 This doesn't just include things to put on a "to do" list, this involves all work that I may one day need to remember.
 As an example, I try to constantly write down small things I've learned about coding. 
-Even if I think it's painfully obvious, I know myself, and I know that after taking some time off from coding for a couple of weeks I will have forgetten some painfully obvious things.
+Even if I think it's painfully obvious, I know myself, and I know that after taking some time off from coding for a couple of weeks I will have forgotten those painfully obvious things.
 "How do I set-up a new git repo and set-up the ssh permissions again??", 
 I find these little questions to be stressful, hence raising my mental activation energy barrier.
 But if I've written down a list of instructions in a physical notebook, I know I can just reread that and get back up to speed.
@@ -85,7 +85,7 @@ That way I can focus on doing things instead of running around trying to find th
 Another obvious tip, but one that I just *know* we all need a constant reminder of.
 This is especially important for all scientists, as we need to be keeping on top of the literature and keeping a bibliography.
 It's very annoying knowing that you downloaded an important paper a while ago,
-but when you need to find it, you have to dig through a mess of unorganised titles in your reference management software
+but when it's finally time you need it, you have to dig through a mess of unorganised titles in your reference management software
 (or worse, you have to dig though a mess of randomly named pdf's in your downloads folder).
 So if you keep a library of papers, take the small amount of extra time to simply organise it in a way that will make it easier to find again in the future.
 Keep topic folders, and subtopic folders nested within those folders. 

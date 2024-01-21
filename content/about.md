@@ -33,7 +33,5 @@ My research skills are primarily "wet-lab" based, though I've been slowly trying
 With the fast speed at which the protein science field is moving,
 I think it's more important than ever to be a well rounded scientist and master both the "wet" and "dry" aspects of biology.
 
-Melbourne is a good place to do science (especially protein science) and a good place to
-live (at least in my opinion), so I'm planning to settle down here if I can.
 When I'm not in the lab or on the computer, I like to hang out with my wife and two dogs.
 Sometimes, if there's time, I like to read a book.
