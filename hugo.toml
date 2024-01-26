@@ -69,7 +69,7 @@ ignoreErrors = ["additional-script-loading-error"] # ignore error of loading add
     toc = true
     goToTop = true
     dateFormat = "2006.01.02" # if nothing is specified then day-month-year format is used.
-    description = "Minimal blog written by James Lingford"
+    description = "Minimal blog by James Lingford"
     additionalScripts = ['js/custom.js', 'js/constom-2.js']
     rssFeedDescription = "summary"
 
