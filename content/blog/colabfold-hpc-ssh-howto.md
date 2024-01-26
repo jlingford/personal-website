@@ -304,7 +304,7 @@ For simplicity I tend to stick with the first port listed with a `*` under the c
 After choosing an open port number, we can provide it to the `sbatch` script from Step 2
 and submit it to the Slurm job scheduler like so:
 ```bash
-sbatch run-colab-notebook.sh <PORT_NUMBER>
+sbatch run-colab-notebook.sh
 ```
 If the sbatch script has all the relevant information, we should be provided with a Job_ID
 number immediately.
