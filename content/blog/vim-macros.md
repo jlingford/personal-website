@@ -12,7 +12,7 @@ math = true
 Vim macros (also known as vim recording) are an efficient way to carry out repetitive edits on a text file and are one of the most powerful features of Vim.
 Simply record the exact sequence of keystrokes/edits on one part of your text, and then play it on all other parts of your text to make the same edits instantly.
 Recording a macro starts with simply hitting `q` followed by any alphabetical lower case letter:
-```
+```python
 # start recording a macro
 q<letter>
 
@@ -26,16 +26,16 @@ q
 ```
 
 So for example, here's a simple macro to add checkboxes to a line:
-```
+```python
 qq
-I-[ ]: j
+I-[ ]: ^[j
 q
 ```
 Will start recording into register "`q`", will go into insert mode at the beggining of the line the cursor is on, will write the checklist boxes `- [ ]: ` while in insert mode,
-will then escape to normal mode (the ESC key is represented as `` in Vim), then move down one line.
+will then escape to normal mode (the ESC key is represented as `^[` in Vim), then move down one line.
 
 This macro can be played on 12 consecutive lines like so:
-```
+```python
 12@q
 ```
 Alternatively, it can be played on specific individual lines of your choosing by first hitting `@q` on a line of interest, then repeating that command on other lines by hitting `.`
@@ -54,9 +54,8 @@ What one should do instead is:
 4. yank that new text back into lettered register
 
 So for example, say you're recording a macro into register "`a`":
-```
+```python
 # move to start of line, move 2 words right, delete this third word, move down one line
-
 qa
 02wdwj
 q
@@ -64,7 +63,7 @@ q
 But you realise this doesn't behave as consistently as you like it, and you want to change it to delete "around" a word with `daw` instead of `dw`.
 Edit it like so:
 
-```
+```python
 # paste the macro recording
 "ap
 
@@ -85,19 +84,19 @@ To do this, while in insert mode simply type `Ctrl-v` followed by hitting `ESC`.
 
 Examples:
 
-```
+```python
 # <C-v>ESC results in the following text:
-
+^[
 
 # <C-v> and hitting the ENTER key results in:
-
+^M
 
 # Pasting from a register while in insert mode:
 # <C-v> followed by <C-r> and paste contents from register ID number 1:
-1
+^R1
 
 # we can even write a vim macro of a command-mode instruction:
-:s/foo/bar/g
+:s/foo/bar/g^M
 ```
 
 Happy Vimming
