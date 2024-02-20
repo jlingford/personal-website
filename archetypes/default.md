@@ -5,4 +5,6 @@ date = {{ .Date }}
 draft = true
 toc = true
 math = true
+tags = []
+categories = []
 +++
