@@ -57,24 +57,111 @@ export SINGULARITY_CACHEDIR="/home/user/path/to/project/dir"
 
 The `.cache` directory should now appear in the designated location.
 
+**3. Check CUDA drivers on GPU nodes**:
+
 
 ### AlphaFold2 Singularity container
 
 
 
-#### Note: Updating AF2 databases
+Note: Updating AF2 databases
 
 
 
 ### ColabFold Singularity container
 
+Unlike the official AF2 release from DeepMind, ColabFold doesn't require the AF2 databases to be locally installed as it queries a remote public database maintained by the ColabFold creators.
+This is a great option for those with limited disk space in their project directories.
+ColabFold has the further advantage of generating MSAs much faster than the official AF2.
+Setting up the container is straightforward and well documented on their GitHub page:
+
+```bash
+# download the latest version of ColabFold on the latest CUDA drivers
+singularity pull docker://ghcr.io/sokrypton/colabfold:1.5.5-cuda12.2.2
+
+# download the AF2 weights
+singularity run -B /home/user/path/to/project/dir/cache:/cache \
+  colabfold_1.5.5-cuda12.2.2.sif \
+  python -m colabfold.download
+```
+
+Then to run the ColabFold code, run:
+
+```bash
+# run ColabFold
+singularity run --nv \
+  -B /local/path/to/cache:/cache -B $(pwd):/work \
+  colabfold_1.5.5-cuda12.2.2.sif \
+  colabfold_batch \
+    /work/input/test.fasta \
+    /work/output
+```
+The `-B` flags are crucial for singulatity to run as they "bind" you local working directories (including any files contained within) to the Singularity container,
+allowing the containerized code to have access to your AF2 input fasta files.
+The `--nv` flag ensures that Singularity can run on Nvidia GPUs.
+
+For example, one could setup an `sbatch` script like so, which will install the singularity container and AF2 weights if not done so already,
+print out the `colabfold_batch --help` page to std-out,
+then run AF2_multimer_v3 with 20 recycles and run Amber relax on the top ranked model:
+
+```bash
+#!/bin/bash
+#SBATCH --job-name="JOB_NAME"
+#SBATCH --account=<account_name>
+#SBATCH --time=0:05:00
+#SBATCH --partition=<partintion_name>
+#SBATCH --gres=gpu:A100:1
+#SBATCH --ntasks=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --mem=100GB
+#SBATCH --mail-user=<email>
+#SBATCH --mail-type=BEGIN,END,FAIL,TIME_OUT
+#SBATCH --chdir="/home/user/path/to/work"
+#SBATCH --output=log-%j.out
+#SBATCH --error=log-%j.err
+
+# log-%j.out
+echo 'running colabfold:1.5.5-cuda12.2.2'
+nvidia-smi
+
+# setup singularity
+module purge
+module load singularity
+export SINGULARITY_CACHEDIR="/home/jamesl/rp24/scratch_nobackup/jamesl"
+
+# download singularity container and alphafold weights
+singularity pull docker://ghcr.io/sokrypton/colabfold:1.5.5-cuda12.2.2
+singularity run -B /home/jamesl/rp24/scratch_nobackup/jamesl/cache:/cache \
+    colabfold_1.5.5-cuda12.2.2.sif \
+    python -m colabfold.download
+
+# run colabfold help
+singularity run --nv \
+    colabfold_1.5.5-cuda12.2.2.sif \
+    colabfold_batch --help
+
+# run colabfold
+singularity run --nv \
+  -B /local/path/to/cache:/cache -B $(pwd):/work \
+  colabfold_1.5.5-cuda12.2.2.sif \
+  colabfold_batch \
+    --model-type=alphafold2_multimer_v3 \
+    --num-recycle=20 \
+    --num-models=5 \
+    --amber \
+    --num-relax=1 \
+    --use-gpu-relax \
+    /work/input/test.fasta \
+    /work/output
+```
 
 
-## Option 3: LocalColabFold local install
+
+## Option 2: LocalColabFold local install
 
 
 
-## Option 4: Running a Jupyter notebook
+## Option 3: Running a Jupyter notebook
 
 
 
