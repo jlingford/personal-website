@@ -84,7 +84,7 @@ so we'll go through how to do this first.
 Run the following on the terminal of your local machine (i.e. not logged into your HPC).
 
 ```bash
-ssh keygen -b 4096 -t rsa -C "Add your own personal comment between quotes"
+ssh-keygen -b 4096 -t rsa -C "Add your own personal comment between quotes"
 ```
 
 The command will prompt you to give this new keypair a name. I name mine something simple
