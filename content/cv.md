@@ -6,4 +6,4 @@ toc = false
 +++
 
 You can find a `.pdf` copy of my CV below:
-* [James Lingford CV](/pdfs/CV_JamesLingford.pdf) -- Last updated: April 2024
+* [James Lingford CV](/pdfs/CV_JamesLingford.pdf) -- Last updated: June 2024
