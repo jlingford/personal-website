@@ -37,7 +37,8 @@ trans 70 target c
 ```
 To show the cavity surface of the quinone-binding pocket, we have to define an area near where we think a cavity will be.
 One way to do this is to select protein atoms within the vicinity of a ligand buried inside the protein.
-The quinone molecule is specified by the non-standard residue code `:DCQ`.
+In the case of this Complex I structure, the ligand of interest is a quinone molecule.
+This quinone is encoded in the PDB file with the non-standard residue code `:DCQ`.
 
 This command shows the surface of all atoms (`@`) within 10 Å (`<10`) of the quinone (`:DCQ`).
 ```
@@ -45,15 +46,15 @@ surface #2.1:DCQ @<10
 ```
 ![cavity_in_chimerax_1](/images/cavity/cavity1.png) 
 
-There are a number of smaller disconnected cavities highlighted from this command that look like small "blobs".
-This is not ideal because we only want to visualise the quinone-binding cavity alone.
+There are a number of smaller disconnected cavities surrounding the main cavity that look like small "blobs".
+This is not ideal because we want to visualise the quinone-binding cavity alone.
 To do this, we can rerun the command but specify we only want to see the `N` number of largest surfaces with the `visiblePatches` options.
 ```
 surface #2.1:DCQ @<10 visiblePatches 1
 ```
 ![cavity_in_chimerax_2](/images/cavity/cavity3.png) 
 
-It looks a bit cleaner, but there's still the issue of the cavity surface looking like it has tears at its edges.
+It looks a bit cleaner, but there's still the issue of that the cavity surface looks like it's "torn" at the edges.
 This is because we are still visualising the cavity as three separate surfaces from each of the three subunits surrounding the quinone.
 To make a single surface, we need to specify which protein surfaces to joing together with the `enclose` option.
 ```
@@ -76,12 +77,12 @@ surface #2.1:DCQ @<15 visiblePatches 1 enclose /4,6,H
 
 This looks like a more complete cavity surface.
 However, extending the radius beyond 15 Å results in showing a surface of the outside of the protein.
-I will describe one way to get around this limitation below.
+I will describe one way to get around this limitation below (see the third section).
 
 But for now, what if we use a different probe size with the `probeRadius` option to visualise the cavity?
 The default probe radius size is 1.4 Å, which is approximately the radius of a water molecule.
-This small probe size results in a "lumpy" and large cavity surface area.
-Maybe we could increase this probe radius size to better reflect the size of the quinone head group?
+This small probe size results in a large and "lumpy" cavity surface area.
+Maybe we could increase this probe radius size closer to the size of the quinone head group to reflect how the quinone has restricted space to move inside the cavity?
 ```
 surface #2.1:DCQ @<15 visiblePatches 1 enclose /4,6,H probeRadius 2.0
 ```
@@ -114,7 +115,7 @@ Let's use dinitrogen (N<sub>2</sub>), which has the PubChem ID of 947.
 open pubchem:947
 ```
 Select it, and then with the "move atoms" tool under the right mouse tab, manually move N<sub>2</sub> into the approximate position of the MBH cavity (between subunits H, J, and L, which are homologs of the Complex I subunits discussed previously).
-Once you're happy with it's position, and making sure N<sub>2</sub> is still selected/highlighted, run:
+Once you're happy with its position, and making sure N<sub>2</sub> is still selected/highlighted, run:
 ```
 surface sel @<15 visibleP 1 enclose /M,J,L probeRad 2.0
 ```
@@ -125,7 +126,7 @@ surface sel @<15 visibleP 1 enclose /M,J,L probeRad 2.0
 As seen above in both our MBH cavity and Complex I cavity, we haven't captured the entire cavity surface.
 There are still "holes" in these cavities.
 In many cases, this is unavoidable for cavities that aren't closed off from the surrounding solvent.
-That said, we can still capture more of the cavity surface area by simply using moving multiple ligands into the cavity area and iteratively repeating the command until we're happy with the visual.
+That said, we can still capture more of the cavity surface area by simply moving multiple ligands into the cavity area and iteratively repeating the command until we're happy with the visual.
 ```
 # open another copy of dinitrogen
 open pubchem:947
@@ -134,7 +135,7 @@ Move the new N<sub>2</sub> into the approximate position within the cavity like 
 
 ![n2](/images/cavity/cavity11.png) 
 
-And with both N<sub>2</sub> molecules selected now, run:
+And with both N<sub>2</sub> molecules selected, run:
 ```
 sur sel @<15 visibleP 1 enclose /M,J,L probeRad 2.0
 ```
