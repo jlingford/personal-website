@@ -67,7 +67,7 @@ It will also be listed with it's own ID under the "Models" side-window of Chimer
 This will come in handy later on.
 
 If you take a look at this cavity surface from different angles, you'll see that there will be "gaps" where the surface hasn't filled in.
-This is because 10 Å isn't a suffiecient radius from `:DCQ` to reach the edges of the entire cavity.
+This is because 10 Å isn't a sufficient radius from `:DCQ` to reach the edges of the entire cavity.
 We can extend this distance until we are happy that we've captured the full surface of the cavity.
 ```
 surface #2.1:DCQ @<15 visiblePatches 1 enclose /4,6,H
@@ -101,8 +101,8 @@ Let's use the non-quinone binding Complex I-like protein, MBH, as an example.
 ```
 open 6CFW
 ```
-Now, import a small molecule from pubchem.
-Let's use dinitrogen (N<sub>2</sub>), which has the pubchem ID of 947.
+Now, import a small molecule from PubChem.
+Let's use dinitrogen (N<sub>2</sub>), which has the PubChem ID of 947.
 ```
 open pubchem:947
 ```
