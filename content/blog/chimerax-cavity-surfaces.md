@@ -85,6 +85,10 @@ Maybe we could increase this probe radius size to better reflect the size of the
 ```
 surface #2.1:DCQ @<15 visiblePatches 1 enclose /4,6,H probeRadius 2.0
 ```
+*probe radius of 1.4*
+![lumpy](/images/cavity/cavity7.png) 
+*probe radius of 2.0*
+![lumpy](/images/cavity/cavity8.png) 
 
 ## Showing a cavity surface when there is no native ligand
 
