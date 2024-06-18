@@ -76,7 +76,7 @@ surface #2.1:DCQ @<15 visiblePatches 1 enclose /4,6,H
 ![cavity_in_chimerax_4](/images/cavity/cavity5.png) 
 
 This looks like a more complete cavity surface.
-However, extending the radius beyond 15 Å results in showing a surface of the outside of the protein.
+However, extending the radius beyond 15 Å results in the surface extending outside of the cavity to the protein exterior.
 I will describe one way to get around this limitation below (see the third section).
 
 But for now, what if we use a different probe size with the `probeRadius` option to visualise the cavity?
@@ -143,6 +143,10 @@ sur sel @<15 visibleP 1 enclose /M,J,L probeRad 2.0
 
 Repeat this process until you're satisfied. 
 It's a little tedious, but ChimeraX gives you enormous control over how to depict a surface.
+Note: playing around with the distance from the ligand (i.e. the `@<15` option part of the command) is necessary to get the desired cavity visual.
+Making the distance too small results in an incomplete cavity surface and may require additional imported ligands as described above.
+But making the distance too large (e.g. `@<20` in the case for these example proteins) results in the surface "jumping" from the protein cavity to the protein exterior.
+This seems to be a quirk of how the surface command in ChimeraX is programmed, so keep these details in mind.
 
 ## Colouring a cavity surface by electrostatics or lipophilicity
 
