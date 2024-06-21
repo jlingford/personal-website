@@ -5,6 +5,8 @@ date = 2024-01-02T14:44:05+11:00
 draft = false
 toc = true
 math = true
+tags = ['Vim', 'Tmux', 'Linux']
+categories = ['Linux', 'Vim']
 +++
 
 ![tmux-logo](https://upload.wikimedia.org/wikipedia/commons/e/e4/Tmux_logo.svg)

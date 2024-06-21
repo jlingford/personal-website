@@ -4,6 +4,8 @@ author = 'by James Lingford'
 date = 2023-11-04T16:58:22+11:00
 draft = false
 toc = true
+tags = ["ChimeraX"]
+categories = ["How to", "ChimeraX"]
 +++
 
 ## Inspiration

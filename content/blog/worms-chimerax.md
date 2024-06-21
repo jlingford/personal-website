@@ -5,8 +5,8 @@ date = 2024-03-16T16:07:40+11:00
 draft = false
 toc = false
 math = true
-tags = ['chimerax']
-categories = ['chimerax']
+tags = ['ChimeraX', 'How to']
+categories = ['ChimeraX']
 +++
 
 ![worms](/images/worms/worm1.jpg)

@@ -4,8 +4,8 @@ author = 'by James Lingford'
 date = 2023-10-29T12:24:45+11:00
 draft = false
 toc = true
-tags = ['alphafold', 'HPC', 'colabfold', 'ssh', 'protein structure']
-categories = ['computational biology', 'how to']
+tags = ['AlphaFold2', 'HPC', 'colabfold', 'ssh', 'protein structure']
+categories = ['computational biology', 'How to']
 +++
 
 ![image](/images/a.png)

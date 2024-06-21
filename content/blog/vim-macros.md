@@ -5,6 +5,8 @@ date = 2024-01-24T19:31:17+11:00
 draft = false
 toc = true
 math = true
+tags = ['Vim']
+categories = ['Vim']
 +++
 
 ## Vim macros refresher

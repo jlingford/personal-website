@@ -4,6 +4,8 @@ author = 'by James Lingford'
 date = 2023-12-14T15:54:07+11:00
 draft = false
 toc = true
+tags = ['linux']
+categories = ['linux', 'productivity']
 +++
 
 ## The dotfiles problem

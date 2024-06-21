@@ -1,12 +1,12 @@
 +++
-title = 'How to display protein cavity surfaces in ChimeraX'
+title = 'How to visualise protein cavity surfaces in ChimeraX'
 author = 'by James Lingford'
 date = 2024-06-17T17:54:24+10:00
 draft = false
 toc = true
 math = true
-tags = []
-categories = []
+tags = ["ChimeraX", "protein cavity"]
+categories = ["How to", "ChimeraX"]
 +++
 
 ![header](/images/cavity/header1.png) 

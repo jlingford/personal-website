@@ -5,6 +5,8 @@ date = 2024-01-19T14:44:05+11:00
 draft = false
 toc = true
 math = true
+tags = ['productivity']
+categories = ['Life stuff']
 +++
 
 Going into 2024, I thought it would be fun to write about how I like to think about being productive, and how to slowly become more productive.

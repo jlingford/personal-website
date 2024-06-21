@@ -5,6 +5,8 @@ date = 2024-01-17T20:52:57+11:00
 draft = false
 toc = false
 math = true
+tags = ['Vim', 'HPC', 'linux']
+categories = ['Vim']
 +++
 
 ![Vim logo](https://upload.wikimedia.org/wikipedia/commons/9/9f/Vimlogo.svg)

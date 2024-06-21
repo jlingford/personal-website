@@ -1,13 +1,15 @@
 +++
-title = 'Adding cofactors to AlphaFold models with help from FoldSeek'
+title = 'Adding cofactors to AlphaFold2 models with help from FoldSeek'
 author = 'by James Lingford'
 date = 2023-11-04T22:54:42+11:00
 draft = false
 toc = true
 math = true
+tags = ["AlphaFold2", "FoldSeek"]
+categories = ["How to", "AlphaFold2"]
 +++
 
-## AlphaFold can't predict cofactors (yet)
+## AlphaFold2 can't predict cofactors (yet)
 
 One of the limitations of AlphaFold2 is that it can't predict where cofactors or ligands will bind to in a protein.
 It does however, do an eerily good job of predicting the structural architecture of cofactor/ligand binding sites.
