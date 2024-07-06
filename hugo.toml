@@ -121,6 +121,6 @@ url = "https://github.com/jlingford"
 name = "linkedin"
 url = "https://www.linkedin.com/in/jameslingford/"
 
-[[params.socialIcons]]
-name = "twitter"
-url = "https://bsky.app/profile/dialecticbio.bsky.social"
+# [[params.socialIcons]]
+# name = "twitter"
+# url = "https://bsky.app/profile/dialecticbio.bsky.social"
