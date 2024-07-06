@@ -3,7 +3,8 @@ baseURL = 'https://jameslingford.com'
 languageCode = 'en-gb'
 defaultContentLanguage = "en-gb"
 title = 'James Lingford'
-theme = 'modified-hugo-blog'
+theme = ['modified-hugo-blog', 'hugo-embed-pdf-shortcode']
+enableInlineShortcodes = true
 enableEmoji = true
 ignoreErrors = [
     "additional-script-loading-error",
