@@ -5,32 +5,36 @@ defaultContentLanguage = "en-gb"
 title = 'James Lingford'
 theme = 'modified-hugo-blog'
 enableEmoji = true
-ignoreErrors = ["additional-script-loading-error"] # ignore error of loading additional scripts.
+ignoreErrors = [
+    "additional-script-loading-error",
+] # ignore error of loading additional scripts.
 # disqusShortname = 'Comments'
 
 ########################### Markup settings ############################
 # set markup.highlight.noClasses=false to enable code highlight
 [markup]
-    defaultMarkdownHandler = 'goldmark'
-    [markup.highlight]
-        noClasses = false
-    [markup.goldmark.renderer]
-        unsafe = true
-        [markup.tableOfContents]
-            startLevel = 2 # ToC starts from H2
-            endLevel = 5 # ToC ends at H4
-            ordered = false # generates <ul> instead of <ol>
+defaultMarkdownHandler = 'goldmark'
+[markup.highlight]
+noClasses = false
+[markup.goldmark.renderer]
+unsafe = true
+[markup.tableOfContents]
+startLevel = 2  # ToC starts from H2
+endLevel = 5    # ToC ends at H4
+ordered = false # generates <ul> instead of <ol>
 
 [security]
-    enableInlineShortcodes = false
-    [security.exec]
-        allow = ['^(dart-)?sass(-embedded)?$', '^go$', '^npx$', '^postcss$', '^pandoc$']
-        osEnv = ['(?i)^((HTTPS?|NO)_PROXY|PATH(EXT)?|APPDATA|TE?MP|TERM|GO\w+|(XDG_CONFIG_)?HOME|USERPROFILE|SSH_AUTH_SOCK|DISPLAY|LANG)$']
-    [security.funcs]
-        getenv = ['^HUGO_', '^CI$']
-    [security.http]
-        methods = ['(?i)GET|POST']
-        urls = ['.*']
+enableInlineShortcodes = false
+[security.exec]
+allow = ['^(dart-)?sass(-embedded)?$', '^go$', '^npx$', '^postcss$', '^pandoc$']
+osEnv = [
+    '(?i)^((HTTPS?|NO)_PROXY|PATH(EXT)?|APPDATA|TE?MP|TERM|GO\w+|(XDG_CONFIG_)?HOME|USERPROFILE|SSH_AUTH_SOCK|DISPLAY|LANG)$',
+]
+[security.funcs]
+getenv = ['^HUGO_', '^CI$']
+[security.http]
+methods = ['(?i)GET|POST']
+urls = ['.*']
 
 ########################### Banner menu ############################
 [menu]
@@ -40,81 +44,82 @@ ignoreErrors = ["additional-script-loading-error"] # ignore error of loading add
 #     url = '/'
 #     weight = 10
 [[menu.main]]
-    pageRef="blog"
-    name = 'Blog'
-    url = '/blog/'
-    weight = 30
+pageRef = "blog"
+name = 'Blog'
+url = '/blog/'
+weight = 30
 [[menu.main]]
-    pageRef="about"
-    name = 'About'
-    url = '/about/'
-    weight = 20
+pageRef = "about"
+name = 'About'
+url = '/about/'
+weight = 20
 [[menu.main]]
-    pageRef="cv"
-    name = 'CV'
-    url = '/cv/'
-    weight = 40
+pageRef = "cv"
+name = 'CV'
+url = '/cv/'
+weight = 40
 [[menu.main]]
-    pageRef = "contact"
-    name = 'Contact'
-    url = '/contact/'
-    weight = 50
+pageRef = "contact"
+name = 'Contact'
+url = '/contact/'
+weight = 50
 
 
 ########################### Home page body ############################
 [params]
-    sitename = "James Lingford"
-    defaultColor = "auto"
-    mainSections = ['blog']
-    toc = true
-    goToTop = true
-    dateFormat = "2006.01.02" # if nothing is specified then day-month-year format is used.
-    description = "Minimal blog by James Lingford"
-    additionalScripts = ['js/custom.js', 'js/constom-2.js']
-    rssFeedDescription = "summary"
+sitename = "James Lingford"
+defaultColor = "auto"
+mainSections = ['blog']
+toc = true
+goToTop = true
+dateFormat = "2006.01.02"                               # if nothing is specified then day-month-year format is used.
+description = "Minimal blog by James Lingford"
+additionalScripts = ['js/custom.js', 'js/constom-2.js']
+rssFeedDescription = "summary"
 
 [params.author]
-    avatar = "james-avi3.jpg" # put the file in assets folder; also ensure that image has same height and width
-    intro = "James Lingford"
-    name = "James Lingford"
-    description = "Interested in proteins and evolution. A blog about things I've been learning about, including protein design, biophysics, computational biology skills, and Linux tools."
+avatar = "james-avi3.jpg"                                                                                                                                                                # put the file in assets folder; also ensure that image has same height and width
+intro = "James Lingford"
+name = "James Lingford"
+description = "Interested in proteins and evolution. A blog about things I've been learning about, including protein design, biophysics, computational biology skills, and Linux tools."
 
 [params.webmanifest]
-    name = "jameslingford"
-    short_name = "jameslingford"
-    start_url = "/"
-    theme_color = "#434648"
-    background_color = "#fff"
-    display = "standalone"
+name = "jameslingford"
+short_name = "jameslingford"
+start_url = "/"
+theme_color = "#434648"
+background_color = "#fff"
+display = "standalone"
+
+########################### Taxonony ############################
+[taxonomies]
+category = "categories"
 
 
 ########################### Tiles at footer ############################
 # Allow to override `browserconfig.xml` params (configuration for windows embeded browsers)
 [params.browserconfig]
-    TileColor = "#2d89ef" # default windows 10 blue tile color
+TileColor = "#2d89ef" # default windows 10 blue tile color
 
 [[params.socialIcons]]
-    name = "kofi"
-    url = "https://ko-fi.com/jameslingford"
+name = "kofi"
+url = "https://ko-fi.com/jameslingford"
 
 [[params.socialIcons]]
-    name = "rss"
+name = "rss"
 
 [[params.socialIcons]]
-    name = "googlescholar"
-    url = "https://scholar.google.com/citations?user=4KSRHTUAAAAJ&hl=en"
+name = "googlescholar"
+url = "https://scholar.google.com/citations?user=4KSRHTUAAAAJ&hl=en"
 
 [[params.socialIcons]]
-    name = "github"
-    url = "https://github.com/jlingford"
+name = "github"
+url = "https://github.com/jlingford"
 
 [[params.socialIcons]]
-    name = "linkedin"
-    url = "https://www.linkedin.com/in/jameslingford/"
+name = "linkedin"
+url = "https://www.linkedin.com/in/jameslingford/"
 
 [[params.socialIcons]]
-    name = "twitter"
-    url = "https://bsky.app/profile/dialecticbio.bsky.social"
-
-
-
+name = "twitter"
+url = "https://bsky.app/profile/dialecticbio.bsky.social"
