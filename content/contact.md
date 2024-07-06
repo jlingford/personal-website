@@ -9,7 +9,7 @@ If you ever feel like reaching out for any reason, email is the best option at
 
 You can follow this blog using your favourite **RSS** feed reader or browser extension.
 
-You can follow me elsewhere too at:
+You can follow me elsewhere at:
 
 * [Google Scholar](https://scholar.google.com/citations?user=4KSRHTUAAAAJ&hl=en)
 * [LinkedIn](https://www.linkedin.com/in/jameslingford/)
