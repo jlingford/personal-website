@@ -9,7 +9,7 @@ tags: []
 categories: []
 ---
 
-I've written an article for the [Australian BioCommons](https://www.biocommons.org.au/) Structural Biology Computing GitHub page.
+I've written an article for the [Australian BioCommons](https://www.biocommons.org.au/) Structural Biology Computing [GitHub page](https://github.com/Australian-Structural-Biology-Computing).
 The article is intended to be a guide on best practices for presenting and sharing AlphaFold models in a paper.
 
 Check it out here: [https://australian-structural-biology-computing.github.io/website/best-practices-alphafold](https://australian-structural-biology-computing.github.io/website/best-practices-alphafold)
