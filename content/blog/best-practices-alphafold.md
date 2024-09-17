@@ -3,7 +3,7 @@ title: 'Best practices for presenting and sharing AlphaFold models in a paper'
 author: 'by James Lingford'
 date: 2024-09-17T18:12:40+10:00
 draft: false
-toc: true
+toc: false
 math: true
 tags: []
 categories: []
