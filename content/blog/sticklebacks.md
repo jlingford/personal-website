@@ -3,7 +3,7 @@ title: 'DNA fragility in stickleback fish -- a summary of one of my favourite pa
 author: 'by James Lingford'
 date: 2024-09-22T14:56:23+10:00
 draft: true
-toc: true
+toc: false
 math: true
 tags: []
 categories: []
@@ -19,7 +19,7 @@ The paper is a major inspiration for me as to what good science looks like.
 
 There is an amazing evolutionary biology paper out this week in Science: [DNA fragility in the parallel evolution of pelvic reduction in stickleback fish](https://www.science.org/doi/10.1126/science.aan1425), by Kathleen Xie and coauthors.
 
-![pic1](static/fragility/pic1.png)
+![pic1](/images/fish/p1.jpg)
 
 Before we dive into the paper, let's first look at what the big picture is. 
 We begin with the observation that numerous species exhibit rapid and repeated bouts of adaptive evolution to new environments [CITE].
@@ -29,7 +29,7 @@ Pelvic fins in marine sticklebacks are believed to be adaptations for detering p
 But freshwater sticklebacks lack pelvic fins. Why?
 The dominant hypothesis is that freshwater environments are more nutrient scare compared to marine environments, thus investing in costly pelvic fin development would be detrimental to sticklebacks survival in this context.
 
-![pic2]()
+![pic2](/images/fish/p2.jpg)
 *Figure 1 from [Jones et al. (2012) Nature](https://www.nature.com/articles/nature10944)*
 
 How is this evolutionary adaptation so rapid and repeatable?
@@ -37,7 +37,7 @@ What we learned in school is that mutations are rare, random, and usually delete
 So how can these stickleback fin mutations be common, repeatable, and (given it’s the right environment) beneficial?
 Previous work from David M Kingsley’s lab has shown that a gene, “Pitx1”, controls pelvic fin size.
 Freshwater sticklebacks have low or no Pitx1 expression (hence a lack of pelvic fins).
-Interestingly, they couldn’t find any mutations in the Pitx1 protein sequence, so the mutations that are ablating Pitx1 expression and thus ablating pelvic fin growth must be located somewhere else in the genome.
+Interestingly, they couldn’t find any mutations in the Pitx1 protein sequence, so the mutations that are ablating Pitx1 expression must be located somewhere else in the genome.
 A likely suspect is mutation in regulatory DNA sequences (like promotors or enhancers) that are regulating Pitx1 expression.
 
 Indeed, [Shapiro et al. (2004)](https://www.nature.com/articles/nature02415) hypothesised that mutations in regulatory DNA sequences controlling Pitx1 expression (ie. promotors & enhancers) were responsible for this rapid & repeatable evolution.
@@ -53,9 +53,9 @@ Curiously, this region of the genome has an unusually high tendency to acquire d
 ![pic4]
 
 But questions remained. 
-How is this happening so rapidly in the wild? 
-Aren't mutations--especially large deletion mutations like the one here--rare and random? 
 Why are frequent deletion mutations localised at the Pel enhancer?
+Aren't mutations--especially large deletion mutations like the one here--rare and random? 
+How is this happening so rapidly in the wild? 
 Enter this new paper by Xie et al. (2019).
 The authors had observed in prior work that “Pel enhancer sequences show high predicted helical twist flexibility" which they note is "a DNA feature associated with delayed replication and fragile site instability.”
 Thus, they hypothesised that these “special DNA features may shape adaptive variation at the Pitx1 locus”.
@@ -64,33 +64,51 @@ If Pel sequences do have unusual DNA features, they should migrate differently o
 So they made plasmids containing Pel sequences from both freshwater & marine sticklebacks. 
 And indeed, marine vs freshwater DNA migrates differently on 2D gels.
 
-Pel DNA from marine sticklebacks produce a “kink” on 2D gels which is absent in the freshwater variants (which have deletions).
-This “kink” is reminiscent of 2D gels run with Z-DNA.
-Z-DNA has a different structure to regular B-DNA (hence altered 2D gel migration).
+![2dgels](/images/fish/p3.jpg)
+
+Pel DNA from marine sticklebacks produce a “kink” on 2D agarose gels which is absent in the freshwater variants (which have deletions).
+This “kink” is reminiscent of 2D agarose gels run with a form of DNA known as Z-DNA.
+The common structural form of DNA is known as B-DNA.
+Meanwhile, Z-DNA is simply DNA but with an different structure than usual.
+The differences in the atomic structure between B-DNA and Z-DNA causes them to travel at different rates through a 2D agarose gel.
+
+![pic]
 
 Looking at the sequence, Pel contains a lot of TG-repeats (see attached figure)
 
+![pic]
+
 In previous work, long stretches of alternating pyrimidine/purine repeats have been shown to form Z-DNA: pnas.org/content/80/7/1…
+
+![pic]
 
 Z-DNA has been previously shown to be more unstable in vivo (possibly a result of backbone strain from its unfavourable structure).
 This leads to chromosomal fragile sites, DNA breaks, and erroneous DNA repair ncbi.nlm.nih.gov/pmc/articles/P…
 They tested this idea for themselves by inserting TG-repeats (but no other Pel sequences) into a plasmid.
 The TG-repeats alone were enough to recapitulate the Z-DNA “kinks” on 2D gels.
 
+![pic]
+
 Could explain why Pel is so prone to deletion?
 To answer that question, they tested the effect of Pel sequences on chromosome stability.
 They did this by measuring the rate of DNA double-strand breaks in yeast artificial chromosomes with selectable markers.
 
-It works like so: every time the yeast replicates its genome to divide, the DNA of Pel could break if it is unstable. If it breaks, the gene URA3 is lost. URA3 converts 5-FOA into a toxic compound that kills yeast.
-∴ by counting the number of yeast that survive on media with 5-FOA, you get a readout of how many DNA breaks occurred.
-And whaddya know? Marine Pel was highly prone to DNA breaks every time the cell undergoes division. Freshwater Pel was similar to the control in no. of DNA breaks per cell div.
+It works like so: every time the yeast replicates its genome to divide, the DNA of Pel could break if it is unstable. If it breaks, the gene URA3 is lost. URA3 converts the compound 5-FOA into a toxic compound that kills yeast.
+Therefore, by counting the number of yeast that survive on media with 5-FOA, you get a readout of how many DNA breaks occurred.
+And whaddya know? Marine Pel was highly prone to DNA breaks every time the cell undergoes division. Freshwater Pel was similar to the control in numer of DNA breaks per cell division.
 
 Interestingly, inverting the Marine Pel sequence resulted in a dramatic reduction in the number of DNA breaks per cell division
+
+![pic]
 
 Why does inverting the Pel sequence alter DNA breakage? Changing TG-repeats to CA-repeats should still form Z-DNA?
 Well, apparently, it’s not just Z-DNA, it’s TG-repeats when they are on the lagging-strand during eukaryotic DNA replication! As seen when they reversed the orientation for the origin of replication.
 
+![pic]
+
 And the longer the TG-repeat, the more DNA breaks that occur.
+
+![pic]
 
 Why are TG-repeats so much more unstable when they are on the on the lagging strand and not the leading strand of a DNA replication bubble? That is beyond the scope of this paper, but the answer might have to do with secondary structure formation from TG-repeats
 What kind of secondary structure could TG-repeats make?
@@ -104,28 +122,35 @@ pnas.org/content/103/8/…
 sciencedirect.com/science/articl…
 
 
-The experiment works by using supF, which is a tRNA (in E.coli) that incorporates a Tyrosine at a UAG amber stop codon. supF allows read through of a lazZ gene containing a nonsense amber codon. Blue/white colony selection can be performed. Mutations to supF form white colonies.
+The experiment works by using supF, which is a tRNA in *E. coli* that incorporates a Tyrosine at a UAG amber stop codon. supF allows read through of a lazZ gene containing a nonsense amber codon. Blue/white colony selection can be performed. Mutations to supF form white colonies.
 
 Combining these results, a molecular mechanism becomes clear: TG-repeats in the Pel sequence result in deletion mutations during DNA replication due to the fragility. But it only works if the direction of DNA replication is correct (with TG-repeats on the lagging strand).
 But the question remains: what is going on in the stickleback genome? is DNA replication really going in the right direction? If it isn’t, then this mechanism can’t be used to explain stickleback adaptive evolution.
-Answering this question isn’t as easy as it first sounds. Unlike yeast & E.coli, there are no strong consensus seq's for replication origins in metazoans. Thankfully, nascent strand sequencing (NS-seq) can pinpoint replication ori's nature.com/articles/nrg.2… pnas.org/content/107/1/…
-To do NS-seq, they divided stickleback embryos into single cells and did FACS sorting to separate cells based on what stage of the cell cycle they were in. They captured S-phase cells “in the act” of replicating their DNA. en.wikipedia.org/wiki/Cell_cycl…
+Answering this question isn’t as easy as it first sounds.
+Unlike yeast & E.coli, there are no strong consensus sequences for replication origins in metazoans.
+Thankfully, nascent strand sequencing (NS-seq) can pinpoint replication origins
+nature.com/articles/nrg.2… pnas.org/content/107/1/…
+
+To do NS-seq, they divided stickleback embryos into single cells and did FACS sorting to separate cells based on what stage of the cell cycle they were in.
+They captured S-phase cells “in the act” of replicating their DNA. en.wikipedia.org/wiki/Cell_cycl…
 
 They could then do massively parallel sequencing on S-phase cells. Nascent strands formed at replication origins generate more sequencing reads and greater read depth. Regions of high depth therefore correspond to replication origins
 
 And whaddya know? The replication origin nearest to Pel on the chromosome will extend replication in the direction that promotes Pel fragility (i.e. TG-repeats on the lagging strand).
 
-Taking it one step further, the authors used CRISPR/Cas9 to make cuts flanking Pel in stickleback embryos. DNA repair machinery must have a hard time handing the TG-repeats too, because deletions occurred and the Pel(CRISPR)/Pel(KO) progeny exhibited smaller/no pelvic fins
+Taking it one step further, the authors used CRISPR/Cas9 to make cuts flanking Pel in stickleback embryos.
+DNA repair machinery must have a hard time handing the TG-repeats too, because deletions occurred and the Pel(CRISPR)/Pel(KO) progeny exhibited smaller/no pelvic fins
 
-With all this experimental data in hand, the authors then ask the big question: “Could elevated mutation rates contribute to reuse of Pel deletions in parallel evolution?” To answer that, they used population genetics modelling.
-Point mutations occur at low rates (~10^−9 per site per generation) and are unlikely to fix in populations, even when conferring a selective advantage. But fragile sites have higher mutation rates (~10^−5 per site per generation).
+With all this experimental data in hand, the authors then ask the big question: “Could elevated mutation rates contribute to reuse of Pel deletions in parallel evolution?” 
+To answer that, they used population genetics modelling.
+Point mutations occur at low rates (~10^−9 per site per generation) and are unlikely to fix in populations, even when conferring a selective advantage.
+But fragile sites have higher mutation rates (~10^−5 per site per generation).
 
 “The combined effects on both the “arrival of the fittest” and the “survival of the fittest” may explain why recurrent Pel deletions are the predominant mechanism for evolving stickleback pelvic reduction”
 The authors then speculate on how general this fragile-site-driven-evolution could be for other traits in sticklebacks and humans.
 They note that sequences associated with fragility are present at 1000's of other positions in the SB genome. Furthermore, they observe that “TG-repeats are enriched in other loci that have undergone recurrent ecotypic deletions during marine-to-freshwater stickleback evolution”
 
 The human genome also has numerous fragile sites, and they note that “nearly half of currently known mutations underlying adaptive traits in modern humans also appear to be produced by mechanisms with elevated mutation rates”
-
 
 The authors speculate that TG-repeat-associated-fragility – other similar but unknown mechanisms – could explain how “migration of modern humans out of Africa occurred with relatively small populations adapting to new environments in 3000 generations or fewer”
 This molecular mechanism that Xie et al. report is truly remarkable. The implication is that it’s not just TG-repeat-associated-fragility at work, but several other mechanisms that can “tune” the evolvability of phenotypic traits, such as...
