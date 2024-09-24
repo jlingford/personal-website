@@ -9,7 +9,7 @@ tags: []
 categories: []
 ---
 
-The following is a twitter thread I wrote back in January 2019 summarising an amazing paper I had recently read in Science.
+**Note to readers:** The following is a twitter thread I wrote back in January 2019 summarising an amazing paper I had recently read in Science.
 The twitter thread ended up becoming quite popular, and it was (if I do say so myself) an example of good science communication.
 I deleted my twitter some time ago, but I think the thread I wrote deserves to live on.
 I was able to dig it up from the Wayback Machine, so what follows is how it appeared on twitter but with some minor edits and improvements to clarity.
@@ -17,7 +17,7 @@ The paper is a major inspiration for me as to what good science looks like.
 
 ## DNA fragility in the parallel evolution of pelvic reduction in stickleback fish
 
-There is an amazing evolutionary biology paper out this week in Science: [DNA fragility in the parallel evolution of pelvic reduction in stickleback fish](https://www.science.org/doi/10.1126/science.aan1425), by Kathleen Xie and coauthors.
+There is an amazing evolutionary biology paper out in Science, titled [DNA fragility in the parallel evolution of pelvic reduction in stickleback fish](https://www.science.org/doi/10.1126/science.aan1425). This is work by Kathleen Xie and coauthors based out of the Kingsley lab at Stanford University.
 
 ![pic1](/images/fish/p1.jpg)
 
@@ -55,7 +55,7 @@ Curiously, this region of the genome has an unusually high tendency to acquire d
 But questions remained. 
 Why are frequent deletion mutations localised at the Pel enhancer?
 Aren't mutations--especially large deletion mutations like the one here--rare and random? 
-How is this happening so rapidly in the wild? 
+So how is this happening so rapidly in the wild? 
 Enter this new paper by Xie et al. (2019).
 The authors had observed in prior work that “Pel enhancer sequences show high predicted helical twist flexibility" which they note is "a DNA feature associated with delayed replication and fragile site instability.”
 Thus, they hypothesised that these “special DNA features may shape adaptive variation at the Pitx1 locus”.
