@@ -20,7 +20,7 @@ The paper is a major inspiration for me as to what good science looks like.
 
 There is an amazing evolutionary biology paper out in Science, titled [DNA fragility in the parallel evolution of pelvic reduction in stickleback fish](https://www.science.org/doi/10.1126/science.aan1425). This is work by Kathleen Xie and coauthors based out of the Kingsley lab at Stanford University.
 
-![pic1](./images/fish/p1.jpg)
+![pic1](/images/fish/p1.jpg)
 
 Before we dive into the paper, let's first look at what the big picture is.
 We begin with the observation that numerous species exhibit rapid and repeated bouts of adaptive evolution to new environments [CITE].
