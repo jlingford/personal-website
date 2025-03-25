@@ -3,7 +3,7 @@ baseURL = 'https://jameslingford.com'
 languageCode = 'en-gb'
 defaultContentLanguage = "en-gb"
 title = 'James Lingford'
-theme = ['modified-hugo-blog', 'hugo-embed-pdf-shortcode-v2']
+theme = ['modified-hugo-blog']
 enableInlineShortcodes = true
 enableEmoji = true
 ignoreErrors = [
@@ -36,6 +36,11 @@ getenv = ['^HUGO_', '^CI$']
 [security.http]
 methods = ['(?i)GET|POST']
 urls = ['.*']
+
+########################### Module imports ########################
+[module]
+[[module.imports]]
+path = "github.com/AlanTanner/pdfjs-hugo-module"
 
 ########################### Banner menu ############################
 [menu]
