@@ -6,7 +6,7 @@ toc = false
 
 My hope with this website is to write about what I'm
 learning about in the realm of protein science.
-This will likely involve topics like new computational skills I've picked up, 
+This will likely involve topics like new computational skills I've picked up,
 or interesting things I've been reading.
 Currently, I'm trying to learn structural bioinformatics and use these skills more in my
 day to day research.
@@ -21,13 +21,14 @@ I don't expect to answer those questions here in this blog,
 but maybe I can answer some smaller technical questions to get to the bigger questions.
 
 ## Bio
-I'm a protein scientist and research officer based in the [Greening Lab at Monash Uni](http://www.greeninglab.com/about/), Melbourne Australia.
-I'm currently investigating proteins that extract energy from trace gases.
 
-I started out doing an undergraduate degree in genetics at the University of Western Australia. 
-When I finished undergrad, I held off on trying to do a PhD because I didn't know exactly what I wanted to do. 
+I'm PhD student in the [Greening Lab at Monash Uni](http://www.greeninglab.com/about/), Melbourne Australia.
+I'm currently investigating proteins that extract energy from trace gases, specifically hydrogenases.
+
+I started out doing an undergraduate degree in genetics at the University of Western Australia.
+When I finished undergrad, I held off on trying to do a PhD because I didn't know exactly what I wanted to do.
 I managed to get work as a research assistant at the Harry Perkins Institute of Medical Research
-(Perth, Western Australia), where it turns out I had a knack for protein biochemistry and protein purification. 
+(Perth, Western Australia), where it turns out I had a knack for protein biochemistry and protein purification.
 Later on, I moved interstate after landing a research assistant job at WEHI (Melbourne, Victoria) and did even more protein biochemistry work.
 My research skills are primarily "wet-lab" based, though I've been slowly trying to evolve into a skilled "dry-lab" scientist too.
 With the fast speed at which the protein science field is moving,
