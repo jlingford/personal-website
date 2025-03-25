@@ -7,6 +7,7 @@ toc: false
 math: true
 tags: []
 categories: []
+bibliography: refs.bib
 ---
 
 **Note to readers:** The following is a twitter thread I wrote back in January 2019 summarising an amazing paper I had recently read in Science.
@@ -19,9 +20,9 @@ The paper is a major inspiration for me as to what good science looks like.
 
 There is an amazing evolutionary biology paper out in Science, titled [DNA fragility in the parallel evolution of pelvic reduction in stickleback fish](https://www.science.org/doi/10.1126/science.aan1425). This is work by Kathleen Xie and coauthors based out of the Kingsley lab at Stanford University.
 
-![pic1](/images/fish/p1.jpg)
+![pic1](./images/fish/p1.jpg)
 
-Before we dive into the paper, let's first look at what the big picture is. 
+Before we dive into the paper, let's first look at what the big picture is.
 We begin with the observation that numerous species exhibit rapid and repeated bouts of adaptive evolution to new environments [CITE].
 Furthermore, geographically isolated populations of the same species have been observed with the same phenotypic adaptations (i.e. parallel evolution) [CITE].
 This is the case with stickleback fish, which has lost pelvic fins multiple times as marine populations have colonized and adapted to freshwater environments (see [Jones et al. (2012) Nature](https://www.nature.com/articles/nature10944)).
@@ -42,7 +43,7 @@ A likely suspect is mutation in regulatory DNA sequences (like promotors or enha
 
 Indeed, [Shapiro et al. (2004)](https://www.nature.com/articles/nature02415) hypothesised that mutations in regulatory DNA sequences controlling Pitx1 expression (ie. promotors & enhancers) were responsible for this rapid & repeatable evolution.
 
-A big implication here is that mutations at regulatory DNA sequences could lead to dramatic phenotypic changes in some tissues but not others. 
+A big implication here is that mutations at regulatory DNA sequences could lead to dramatic phenotypic changes in some tissues but not others.
 This could enhance the “evolvability” of some traits, since XXX
 The same lab previously identified the enhancer responsible for controlling Pitx1 expression in pelvic fin formation: “Pel”. Deletion of the Pel enhancer results in loss of Pitx1 expression and loss of pelvic fins ([Chan et al. (2010) Science](https://www.science.org/doi/full/10.1126/science.1182213)).
 
@@ -52,16 +53,16 @@ The same lab previously identified the enhancer responsible for controlling Pitx
 Curiously, this region of the genome has an unusually high tendency to acquire deletion mutations.
 ![pic4]
 
-But questions remained. 
+But questions remained.
 Why are frequent deletion mutations localised at the Pel enhancer?
-Aren't mutations--especially large deletion mutations like the one here--rare and random? 
-So how is this happening so rapidly in the wild? 
+Aren't mutations--especially large deletion mutations like the one here--rare and random?
+So how is this happening so rapidly in the wild?
 Enter this new paper by Xie et al. (2019).
 The authors had observed in prior work that “Pel enhancer sequences show high predicted helical twist flexibility" which they note is "a DNA feature associated with delayed replication and fragile site instability.”
 Thus, they hypothesised that these “special DNA features may shape adaptive variation at the Pitx1 locus”.
 
-If Pel sequences do have unusual DNA features, they should migrate differently on 2D electrophoresis gels. 
-So they made plasmids containing Pel sequences from both freshwater & marine sticklebacks. 
+If Pel sequences do have unusual DNA features, they should migrate differently on 2D electrophoresis gels.
+So they made plasmids containing Pel sequences from both freshwater & marine sticklebacks.
 And indeed, marine vs freshwater DNA migrates differently on 2D gels.
 
 ![2dgels](/images/fish/p3.jpg)
@@ -121,7 +122,6 @@ But maybe this DNA break phenomenon they are seeing is just a weird artefact of 
 pnas.org/content/103/8/…
 sciencedirect.com/science/articl…
 
-
 The experiment works by using supF, which is a tRNA in *E. coli* that incorporates a Tyrosine at a UAG amber stop codon. supF allows read through of a lazZ gene containing a nonsense amber codon. Blue/white colony selection can be performed. Mutations to supF form white colonies.
 
 Combining these results, a molecular mechanism becomes clear: TG-repeats in the Pel sequence result in deletion mutations during DNA replication due to the fragility. But it only works if the direction of DNA replication is correct (with TG-repeats on the lagging strand).
@@ -141,7 +141,7 @@ And whaddya know? The replication origin nearest to Pel on the chromosome will e
 Taking it one step further, the authors used CRISPR/Cas9 to make cuts flanking Pel in stickleback embryos.
 DNA repair machinery must have a hard time handing the TG-repeats too, because deletions occurred and the Pel(CRISPR)/Pel(KO) progeny exhibited smaller/no pelvic fins
 
-With all this experimental data in hand, the authors then ask the big question: “Could elevated mutation rates contribute to reuse of Pel deletions in parallel evolution?” 
+With all this experimental data in hand, the authors then ask the big question: “Could elevated mutation rates contribute to reuse of Pel deletions in parallel evolution?”
 To answer that, they used population genetics modelling.
 Point mutations occur at low rates (~10^−9 per site per generation) and are unlikely to fix in populations, even when conferring a selective advantage.
 But fragile sites have higher mutation rates (~10^−5 per site per generation).
@@ -154,18 +154,21 @@ The human genome also has numerous fragile sites, and they note that “nearly h
 
 The authors speculate that TG-repeat-associated-fragility – other similar but unknown mechanisms – could explain how “migration of modern humans out of Africa occurred with relatively small populations adapting to new environments in 3000 generations or fewer”
 This molecular mechanism that Xie et al. report is truly remarkable. The implication is that it’s not just TG-repeat-associated-fragility at work, but several other mechanisms that can “tune” the evolvability of phenotypic traits, such as...
+
 - TG-repeat expansion/contraction (tunes the fragility & rate of mutation)
 - sequence rearrangements (turns mutation “on/off” at a loci)
 - change in DNA replication direction (turns mutation “on/off” at a loci)
 The further implication is that vertebrate genomes could have several more unknown “tricks” to modulate evolvability of specific loci. Protein coding sequences are “protected”, but loci that regulate the temporal + special expression of proteins are open for evo “experimentation”
 For more on this topic, read @SeanBiolCarroll's seminal review: cell.com/cell/fulltext/… #openaccess
 SUMMARY: Xie et al. uncover a unique mechanism for “evolvability”. It depends on...
+
 1) TG-repeats flanking an enhancer regulating a gene for a phenotype
 2) Exploiting the inherent fragility of TG-repeats during DNA replication (+direction)
 3) Fragility leading to DNA breaks
 4) DNA repair processes repairing the breaks but deleting the enhancer, dramatically altering a phenotype
 5) This is supported by population genetic modelling: showing that it's possible for vertebrates to rapidly adapt to new environments despite small population sizes.
 OUTSTANDING QUESTIONS:
+
 - what is the biochemical/biophysical basis for direction dependent TG-repeat fragility?
 - when is the Pel loci open to mutation? When is it not?
 - how much of the phenotypic variation we see in natural pops is due these type of de novo mutations?
