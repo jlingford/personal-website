@@ -14,7 +14,7 @@ You can follow me elsewhere at:
 * [Google Scholar](https://scholar.google.com/citations?user=4KSRHTUAAAAJ&hl=en)
 * [LinkedIn](https://www.linkedin.com/in/jameslingford/)
 * [GitHub](https://github.com/jlingford)
-<!-- * [Bluesky](https://bsky.app/profile/dialecticbio.bsky.social) -->
+* [Bluesky](https://bsky.app/profile/jameslingford.bsky.social)
 
-If you find my posts helpful and would like to read more of them, 
+If you find my posts helpful and would like to read more of them,
 please consider buying me a coffee on **[ko-fi](https://ko-fi.com/jameslingford)** ☕❤️
