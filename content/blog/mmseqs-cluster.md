@@ -1,5 +1,5 @@
 ---
-title: 'Tips for running MMseqs2 cluster and retrieving fasta files of clustered sequences'
+title: 'Running MMseqs2 cluster and retrieving separate fasta files of each cluster'
 author: 'by James Lingford'
 date: 2025-03-30T18:04:28+11:00
 draft: true
@@ -19,6 +19,10 @@ So, here is how I run MMseqs2 clustering, plus a couple of different ways to ret
 
 ## Running MMseqs2 cluster in one go
 
+First things first, setup and oragnise your directory structure.
+MMseqs2 requires a lot of different intermediate databases, so best to keep them all separate.
+And I like to keep different fasta files and projects separate in their own child directories too.
+
 ```bash
 name=your_protein_of_interest # for example
 
@@ -26,12 +30,22 @@ mkdir -p {seqDB,clustDB,alignDB,fastaclustDB,outfiles}/${name}
 mkdir tmp
 ```
 
+Now create the sequence database out of your fasta file for clustering.
+MMseqs2 requires this "seqDB" for all downstream processes.
+Obviously make sure you have MMseqs2 installed (I use the bioconda package).
+
 ```bash
 mmseqs createdb \
-    ./your_fasta_file.faa \ # for example
+    ./YOUR_FASTA_FILE.faa \
     ./seqDB/${name} \
     --dbtype 1
 ```
+
+Now the main part: clustering.
+I like to run all the following steps in one go from a bash script, since it can be quite tedious to run each step individually from the command line.
+In my experience, these steps all run extremely fast on a regular laptop that uses SSD disk space, even with a large input fasta file (and hence large seqDB), and even on the highest sensitivity setting (`-s 7.5`).
+Sensitivity can be increased further by increasing the `--max-seqs` in the cluster prefilter step.
+Change the parameters to what you want too.
 
 ```bash
 #variables
@@ -118,7 +132,7 @@ awk -F'\t' '
 # CAUTION: be sure no other fasta files are present in the current directory
 mv *.faa ./outfiles/${name}/${name}-cov${suffix}-id${suffix2}-splitfastas
 
-# cd to that directory
+# cd to the new directory
 cd !:2
 
 # rename file with number of fastas in headers
