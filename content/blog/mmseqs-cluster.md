@@ -243,7 +243,7 @@ The mmseqs fasta outputs denote different clusters with identical fasta headers 
 This script scans the fasta file for those identical and consecutive lines, and splits them into separate files.
 
 Usage:
-python3 ./split_clusters.py [YOUR_FASTA_FILE.faa]
+python3 split_clusters.py [YOUR_FASTA_FILE.faa]
 """
 
 import re
