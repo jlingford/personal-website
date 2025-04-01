@@ -37,7 +37,7 @@ Obviously make sure you have MMseqs2 installed (I use the bioconda package).
 ```bash
 mmseqs createdb \
     ./YOUR_FASTA_FILE.faa \
-    ./seqDB/${name} \
+    ./seqDB/${name}-DB \
     --dbtype 1
 ```
 
