@@ -2,7 +2,7 @@
 title: 'Converting GTDB faa files to a DIAMOND database with taxonomy'
 author: 'by James Lingford'
 date: 2025-05-30T15:20:33+10:00
-draft: true
+draft: false
 toc: true
 math: true
 tags: []
