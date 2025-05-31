@@ -12,19 +12,17 @@ categories: []
 The [Genome Taxonomy Database (GTDB)](https://gtdb.ecogenomic.org/), is a database of high quality and complete bacterial and archaeal genomes.
 It covers the phylogenetic tree in a consistent way, so that no one type of microbe is overrepresented in the database.
 The latest release of the GTDB (R226) contains 732,475 genomes in total.
-Of this, 143,614 genomes are selected as species representatives that capture most microbial diversity.
+Of this, 143,614 genomes are selected as species representatives that capture most known microbial diversity.
 
-I've wanted to search for proteins in the GTDB (i.e. protein BLAST the GTDB).
-This requires coverting the GTDB fasta files of the species representative genomes into a database that's searchable by a tool like BLASTp, DIAMOND, or MMseqs2.
-MMseqs2 has a convenient built-in command that handles the downloading and building of a protein sequence database with `mmseqs databases`.
-The MMseqs2 database of the GTDB will contain the taxonomic information of each sequence, which is very handy.
-However, building an equivalent GTDB database with taxonomy information for DIAMOND blastp requires a lot more manual effort.
+I've wanted to search for proteins in the GTDB, which requires converting the GTDB fasta files of the species representative genomes into a database that's searchable by a tool like BLASTp, DIAMOND, or MMseqs2.
+[MMseqs2](https://github.com/soedinglab/MMseqs2/) has a convenient built-in command that handles the downloading and building of a protein sequence database with `mmseqs databases`, which is handy.
+However, building an equivalent GTDB database with taxonomy information as well as genome identifiers for [DIAMOND](https://github.com/bbuchfink/diamond) requires a lot more manual effort.
 The following is a solution I've come up with to build such a DIAMOND database.
 
 ## Downloading fasta files and taxdump information for the GTDB
 
 First, download and extract all the fasta files for the species representative genomes.
-Tip: use the [httsp://data.ace.up.edua.au/public/gtdb] mirror, since the one other mirror is extremely slow.
+Tip: use the <https://data.ace.up.edua.au/public/gtdb> mirror, since the one other mirror is extremely slow.
 
 ```bash
 wget https://data.ace.uq.edu.au/public/gtdb/data/releases/release226/226.0/genomic_files_reps/gtdb_proteins_aa_reps_r226.tar.gz
@@ -37,7 +35,7 @@ Next, download the taxdump information for the GTDB.
 The GTDB provides this information in a taxdump archive under the [auxillary files](https://data.ace.uq.edu.au/public/gtdb/data/releases/release226/226.0/auxillary_files/) directory.
 Sadly, this archive doesn't contain any sort of taxid map file (with a list of genome ID's in one column with the corresponding taxonomy ID's in a second column).
 Thankfully, the GitHub repo [shenwei356/gtdb-taxdump](https://github.com/shenwei356/gtdb-taxdump) provides such a taxid map file for each GTDB release.
-The files I want for DIAMOND are `taxid.map`, `names.dmp`, and `nodes.dmp` from [here](https://github.com/shenwei356/gtdb-taxdump/releases/tag/v0.6.0).
+The files I want for DIAMOND are `taxid.map`, `names.dmp`, and `nodes.dmp` which can be found [here](https://github.com/shenwei356/gtdb-taxdump/releases/tag/v0.6.0).
 Download these files and extract them too.
 
 ```bash
@@ -50,6 +48,7 @@ Another way I've found comes from the authors of the [MMseqs2 wiki](https://gith
 I've copy and pasted their script below, with some minor edits.
 
 ```bash
+# Script from the MMseqs2 wiki with minor edits
 # build name.dmp, node.dmp from GTDB taxonomy
 mkdir taxonomy/ && cd "$_"
 wget https://data.ace.uq.edu.au/public/gtdb/data/releases/release226/226.0/genomic_files_all/ssu_all_r226.fna.gz
@@ -109,8 +108,8 @@ However, I'll be sticking with the pre-made taxid.map file from [shenwei356/gtdb
 Each fasta file in the `protein_faa_reps` dir is named with its genome ID, starting with the `GB_GCA_` or `RS_GCF_` prefix, and ending with the suffix `_protein.faa.gz`.
 Each fasta feader within the files contains a unique protein accession identifier and other information from Prodigal.
 These protein accession ID's are not very useful on their own.
-It would be more helpful if each fasta header contained the genome ID too.
-So we can add that info with Bash and Awk:
+It would be more helpful if each fasta header contained the genome ID too, since the genome ID can be used to search against the GenBank, RefSeq, or GTDB webservers.
+We can add genome ID's to each header with Bash and Awk:
 
 ```bash
 # navigate to the extracted faa file directory
